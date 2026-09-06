@@ -1,11 +1,11 @@
-"""Leccion 5 - Colisiones y fusion.
+"""Leccion 6 - Lineas, puntuacion y fin del juego.
 
-Ahora las piezas se detienen al tocar el fondo u otra pieza y se quedan pegadas
-(fusionadas) al tablero. Deja caer varias y observa como se acumulan.
+Cuando llenas una fila entera, desaparece y sumas puntos. Si el tablero se llena
+y una pieza nueva no cabe, el juego termina (pulsa R para reiniciar).
 
     python main.py
 
-Controles: flechas para mover/rotar/bajar, Esc para salir.
+Controles: flechas para mover/rotar/bajar, R reinicia, Esc sale.
 """
 
 

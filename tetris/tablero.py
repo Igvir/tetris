@@ -53,3 +53,23 @@ def es_valida(tablero, matriz, fila, columna):
                 if f >= 0 and tablero[f][c] != 0:
                     return False
     return True
+
+
+def lineas_completas(tablero):
+    """Devuelve los indices de las filas totalmente ocupadas (sin ningun 0)."""
+    return [indice for indice, fila in enumerate(tablero) if 0 not in fila]
+
+
+def eliminar_lineas(tablero):
+    """Elimina las filas completas, desplaza el resto hacia abajo y anade
+    filas vacias arriba. Devuelve cuantas filas se eliminaron.
+    """
+    ancho = len(tablero[0])
+    alto = len(tablero)
+    # Conservamos solo las filas que todavia tienen algun hueco (0).
+    filas_restantes = [fila for fila in tablero if 0 in fila]
+    eliminadas = alto - len(filas_restantes)
+    # Anadimos arriba tantas filas vacias como filas eliminamos.
+    nuevas = [[0] * ancho for _ in range(eliminadas)]
+    tablero[:] = nuevas + filas_restantes
+    return eliminadas

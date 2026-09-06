@@ -1,12 +1,15 @@
-"""Leccion 5: colisiones y fusion.
+"""Leccion 6: lineas completas, puntuacion y fin del juego.
 
-La clase Juego ahora detecta colisiones (con `es_valida`) y, cuando una pieza
-no puede bajar mas, la FUSIONA con el tablero (copia su matriz) y genera una
-pieza nueva. Asi las piezas se acumulan como en el Tetris clasico.
+Cuando una fila se llena por completo, desaparece y las de arriba bajan. Sumamos
+puntos segun cuantas lineas eliminamos a la vez. Y si una pieza nueva no cabe en
+la posicion inicial, el juego termina.
 """
 
 from . import piezas
 from . import tablero as tab
+
+# Puntos segun cuantas lineas se eliminan a la vez.
+PUNTOS_POR_LINEAS = {0: 0, 1: 100, 2: 300, 3: 500, 4: 800}
 
 
 class Juego:
@@ -14,6 +17,9 @@ class Juego:
 
     def __init__(self):
         self.tablero = tab.crear_tablero()
+        self.puntuacion = 0
+        self.lineas = 0
+        self.terminado = False
         self.pieza = None
         self.rotacion = 0
         self.fila = 0
@@ -25,12 +31,15 @@ class Juego:
         return piezas.PIEZAS[self.pieza][self.rotacion]
 
     def nueva_pieza(self):
-        """Genera una pieza nueva arriba y al centro del tablero."""
+        """Genera una pieza nueva arriba y al centro. Si no cabe, fin del juego."""
         self.pieza = piezas.pieza_aleatoria()
         self.rotacion = 0
         self.fila = 0
         ancho_pieza = len(self.matriz_pieza_actual()[0])
         self.columna = tab.ANCHO // 2 - ancho_pieza // 2
+        if not tab.es_valida(self.tablero, self.matriz_pieza_actual(),
+                             self.fila, self.columna):
+            self.terminado = True
 
     def mover(self, dx):
         """Mueve la pieza dx columnas (-1 izquierda, +1 derecha) si es valido."""
@@ -46,17 +55,16 @@ class Juego:
             self.rotacion = siguiente
 
     def bajar(self):
-        """Baja una fila. Si no puede, FUSIONA la pieza y saca una nueva.
-
-        Ahora las piezas se acumulan: al aterrizar, copiamos su matriz en el
-        tablero (fusionar) y generamos una pieza nueva arriba.
-        """
+        """Baja una fila. Si no puede, fusiona, elimina lineas y saca pieza nueva."""
         if tab.es_valida(self.tablero, self.matriz_pieza_actual(),
                          self.fila + 1, self.columna):
             self.fila += 1
         else:
             tab.fusionar(self.tablero, self.matriz_pieza_actual(),
                          self.fila, self.columna)
+            eliminadas = tab.eliminar_lineas(self.tablero)
+            self.lineas += eliminadas
+            self.puntuacion += PUNTOS_POR_LINEAS.get(eliminadas, 0)
             self.nueva_pieza()
 
     def tablero_con_pieza(self):
@@ -71,3 +79,7 @@ class Juego:
                     if 0 <= f < len(copia) and 0 <= c < len(copia[0]):
                         copia[f][c] = matriz[i][j]
         return copia
+
+    def reiniciar(self):
+        """Reinicia el juego a su estado inicial."""
+        self.__init__()
