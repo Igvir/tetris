@@ -25,12 +25,27 @@ def mostrar_tablero(tablero):
 
 
 def fusionar(tablero, matriz, fila, columna):
-    """Copia los numeros distintos de 0 de una pieza dentro del tablero.
-
-    En esta leccion la usamos para colocar piezas "a mano" y verlas dibujadas
-    en la ventana. Mas adelante servira para pegar las piezas que caen.
-    """
+    """Copia los numeros distintos de 0 de una pieza dentro del tablero."""
     for i in range(len(matriz)):
         for j in range(len(matriz[i])):
             if matriz[i][j] != 0:
                 tablero[fila + i][columna + j] = matriz[i][j]
+
+
+def es_valida(tablero, matriz, fila, columna):
+    """Indica si la matriz de una pieza cabe en (fila, columna).
+
+    Recorre SOLO las casillas ocupadas (distintas de 0) de la pieza y
+    comprueba que no salgan de los limites del tablero. (En la Leccion 5
+    anadiremos ademas la comprobacion de choque con otras piezas.)
+    """
+    alto = len(tablero)
+    ancho = len(tablero[0])
+    for i in range(len(matriz)):
+        for j in range(len(matriz[i])):
+            if matriz[i][j] != 0:
+                f = fila + i
+                c = columna + j
+                if c < 0 or c >= ancho or f >= alto:
+                    return False
+    return True

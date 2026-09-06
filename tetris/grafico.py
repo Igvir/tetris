@@ -1,58 +1,71 @@
-"""Leccion 3: la ventana de Pygame que dibuja la matriz con NUMEROS.
+"""Leccion 4: la ventana con una pieza que cae (estilo numeros).
 
-Abrimos una ventana y dibujamos la cuadricula de 10x20. Recorremos la matriz
-del tablero con dos bucles anidados (fila, luego columna) y dibujamos el numero
-de cada casilla como texto. Las casillas con 0 se ven vacias.
-
-Todavia no hay piezas que caigan: eso llega en la Leccion 4. Aqui el objetivo
-es ver los NUMEROS de la matriz dibujados en pantalla.
+Anadimos el bucle de juego: la pieza baja sola cada cierto tiempo y el jugador
+la mueve con las flechas y la rota con la flecha arriba. Seguimos dibujando la
+matriz con NUMEROS.
 """
 
 import pygame
 
+from .juego import Juego
 from . import tablero as tab
 
-TAM = 30                 # tamano en pixeles de cada celda
-FONDO = (10, 10, 20)     # fondo oscuro
-REJILLA = (40, 40, 55)   # lineas de la cuadricula
+TAM = 30
+FONDO = (10, 10, 20)
+REJILLA = (40, 40, 55)
 BLANCO = (240, 240, 240)
 
+INTERVALO_CAIDA = 500   # milisegundos entre cada descenso automatico
 
-def dibujar_tablero(pantalla, fuente, tablero):
-    """Dibuja la cuadricula y el numero de cada casilla."""
-    for fila in range(len(tablero)):            # recorre filas (0..19)
-        for col in range(len(tablero[fila])):   # recorre columnas (0..9)
+
+def dibujar_tablero(pantalla, fuente, matriz):
+    for fila in range(len(matriz)):
+        for col in range(len(matriz[fila])):
             x = col * TAM
             y = fila * TAM
             rect = pygame.Rect(x, y, TAM, TAM)
-            pygame.draw.rect(pantalla, REJILLA, rect, 1)   # borde de la celda
-            numero = tablero[fila][col]
+            pygame.draw.rect(pantalla, REJILLA, rect, 1)
+            numero = matriz[fila][col]
             if numero != 0:
                 texto = fuente.render(str(numero), True, BLANCO)
                 pantalla.blit(texto, texto.get_rect(center=rect.center))
 
 
-def ejecutar(tablero):
-    """Abre la ventana y dibuja el tablero recibido hasta que se cierre."""
+def ejecutar():
     pygame.init()
-    ancho_ventana = tab.ANCHO * TAM
-    alto_ventana = tab.ALTO * TAM
-    pantalla = pygame.display.set_mode((ancho_ventana, alto_ventana))
-    pygame.display.set_caption("Tetris con Matrices - Leccion 3 (numeros)")
+    pantalla = pygame.display.set_mode((tab.ANCHO * TAM, tab.ALTO * TAM))
+    pygame.display.set_caption("Tetris con Matrices - Leccion 4 (la pieza cae)")
     reloj = pygame.time.Clock()
     fuente = pygame.font.SysFont("consolas", 20)
 
+    juego = Juego()
+    tiempo = 0
     corriendo = True
     while corriendo:
-        reloj.tick(60)
+        tiempo += reloj.tick(60)
+
         for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
                 corriendo = False
-            elif evento.type == pygame.KEYDOWN and evento.key == pygame.K_ESCAPE:
-                corriendo = False
+            elif evento.type == pygame.KEYDOWN:
+                if evento.key == pygame.K_LEFT:
+                    juego.mover(-1)
+                elif evento.key == pygame.K_RIGHT:
+                    juego.mover(1)
+                elif evento.key == pygame.K_UP:
+                    juego.rotar()
+                elif evento.key == pygame.K_DOWN:
+                    juego.bajar()
+                elif evento.key == pygame.K_ESCAPE:
+                    corriendo = False
+
+        # Caida automatica por tiempo.
+        if tiempo >= INTERVALO_CAIDA:
+            tiempo = 0
+            juego.bajar()
 
         pantalla.fill(FONDO)
-        dibujar_tablero(pantalla, fuente, tablero)
+        dibujar_tablero(pantalla, fuente, juego.tablero_con_pieza())
         pygame.display.flip()
 
     pygame.quit()

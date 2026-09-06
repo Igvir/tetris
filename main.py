@@ -1,16 +1,13 @@
-"""Leccion 3 - La ventana de Pygame con numeros.
+"""Leccion 4 - La pieza que cae.
 
-Abrimos por primera vez una ventana. Colocamos algunas piezas "a mano" en el
-tablero (fusionando sus matrices) y las vemos dibujadas como NUMEROS sobre la
-cuadricula 10x20. Todavia no caen; eso llega en la Leccion 4.
+Una pieza baja sola por el tablero. Muevela con las flechas izquierda/derecha,
+rotala con la flecha arriba y acelerala con la flecha abajo. Por ahora, al
+llegar al fondo la pieza reaparece arriba (aun no se acumula).
 
     python main.py
 
 Cierra la ventana o pulsa Esc para salir.
 """
-
-from tetris.tablero import crear_tablero, fusionar
-from tetris.piezas import PIEZAS
 
 
 def main():
@@ -21,13 +18,7 @@ def main():
         print("    pip install -r requirements.txt")
         return
 
-    # Creamos el tablero vacio y colocamos algunas piezas a mano para verlas.
-    tablero = crear_tablero()
-    fusionar(tablero, PIEZAS["T"][0], 0, 3)    # una T arriba al centro
-    fusionar(tablero, PIEZAS["L"][0], 17, 0)   # una L abajo a la izquierda
-    fusionar(tablero, PIEZAS["I"][0], 18, 4)   # una I acostada abajo
-
-    grafico.ejecutar(tablero)
+    grafico.ejecutar()
 
 
 if __name__ == "__main__":

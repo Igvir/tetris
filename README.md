@@ -1,14 +1,13 @@
-# Tetris con Matrices — Lección 3: La ventana con números
+# Tetris con Matrices — Lección 4: La pieza que cae
 
-Esta rama corresponde a la **Lección 3**. ¡Abrimos por primera vez una ventana
-de Pygame! Dibujamos el tablero (la matriz) mostrando el **número** de cada
-casilla sobre una cuadrícula de 10×20. Las piezas todavía no caen: las colocamos
-a mano para ver los números dibujados.
+Esta rama corresponde a la **Lección 4**. Creamos la clase `Juego` para guardar
+el estado de la pieza activa. Ahora una pieza **cae sola** y puedes moverla y
+rotarla. Seguimos viendo la matriz con **números**.
 
 ## Qué aprenderás
-- Abrir una ventana de Pygame y dibujar una cuadrícula.
-- Recorrer una matriz con dos bucles anidados (fila, luego columna).
-- Dibujar el número de cada casilla; `0` se ve como celda vacía.
+- Guardar el estado de la pieza (nombre, rotación, fila, columna) en una clase.
+- Mover la pieza a los lados, rotarla (cambiando de matriz) y hacerla bajar.
+- El bucle de juego y la caída automática por tiempo.
 
 ## Instalar y ejecutar
 
@@ -17,11 +16,13 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Verás la cuadrícula con algunas piezas dibujadas como números (una T, una L y una I).
-Cierra la ventana o pulsa Esc para salir.
+Controles: ← → mover, ↑ rotar, ↓ bajar más rápido, Esc salir.
+
+> Nota: en esta lección, al llegar al fondo la pieza **reaparece arriba** sin
+> acumularse. La acumulación (fusión) llega en la Lección 5.
 
 ## Lecciones
-- Anterior: `git checkout leccion-2-piezas`
-- Siguiente: `git checkout leccion-4-pieza-cae` (¡la pieza empieza a caer!)
+- Anterior: `git checkout leccion-3-ventana-numeros`
+- Siguiente: `git checkout leccion-5-colisiones-fusion` (las piezas se acumulan)
 
 La guía completa está en [docs/guia_estudiante.md](docs/guia_estudiante.md) de la rama `main`.
