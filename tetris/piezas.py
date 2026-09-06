@@ -1,14 +1,14 @@
-"""Leccion 2: las piezas (tetrominos) como matrices.
+"""Definicion de las piezas (tetrominos) como matrices.
 
-Cada pieza es una MATRIZ pequena donde `0` es un hueco vacio y un numero del
-1 al 7 identifica la pieza. La rotacion NO se calcula: cada pieza guarda una
-lista con todas sus matrices de rotacion ya escritas, y rotar es pasar a la
-siguiente matriz de esa lista.
+La idea central del curso: cada pieza es una MATRIZ (lista de listas) donde
+`0` es una casilla vacia y un numero del 1 al 7 identifica la pieza. La
+rotacion NO se calcula: cada pieza guarda una lista con todas sus matrices de
+rotacion ya escritas y rotar significa pasar a la siguiente matriz.
 """
 
 import random
 
-# Numero identificador de cada pieza.
+# Numero identificador de cada pieza. El numero tambien decide su color neon.
 NUMERO_PIEZA = {
     "I": 1,
     "O": 2,
@@ -19,8 +19,7 @@ NUMERO_PIEZA = {
     "L": 7,
 }
 
-# Colores neon por numero de pieza. El numero de la matriz decide el color.
-# Esta es la unica novedad de la Leccion 7: la LOGICA no cambia, solo el color.
+# Colores neon por numero de pieza (usados en la Etapa 2, estilo neon).
 COLORES = {
     0: (10, 10, 20),      # fondo oscuro (casilla vacia)
     1: (0, 255, 255),     # I - cian neon
@@ -32,7 +31,8 @@ COLORES = {
     7: (255, 149, 0),     # L - naranja neon
 }
 
-# Cada pieza es una lista de matrices de rotacion.
+# Cada pieza es una lista de matrices de rotacion. Rotar = pasar a la
+# siguiente matriz de la lista (de forma ciclica).
 PIEZAS = {
     "I": [
         [[0, 0, 0, 0],
@@ -115,7 +115,7 @@ def pieza_aleatoria():
 
 
 def mostrar_pieza(nombre, rotacion=0):
-    """Imprime en la terminal la matriz de una pieza en una rotacion dada."""
+    """Imprime en la terminal la matriz de una pieza (util para depurar)."""
     matriz = PIEZAS[nombre][rotacion]
     for fila in matriz:
         print(" ".join(str(celda) for celda in fila))

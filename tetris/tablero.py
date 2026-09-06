@@ -1,8 +1,8 @@
-"""Leccion 1: la matriz del tablero.
+"""La matriz del tablero de juego y las operaciones sobre ella.
 
-El tablero es una MATRIZ (lista de listas) de ALTO filas por ANCHO columnas.
-Se accede siempre como `tablero[fila][columna]`. Por ahora `0` significa
-casilla vacia. En las proximas lecciones un numero 1..7 sera una pieza.
+El tablero es una matriz de ALTO filas por ANCHO columnas. Se accede siempre
+como `tablero[fila][columna]`. `0` es casilla vacia; un numero 1..7 es una
+casilla ocupada por una pieza.
 """
 
 ANCHO = 10   # columnas
@@ -10,33 +10,21 @@ ALTO = 20    # filas
 
 
 def crear_tablero(ancho=ANCHO, alto=ALTO):
-    """Crea y devuelve un tablero vacio (matriz de ceros).
-
-    La parte interior [0 for _ in range(ancho)] crea UNA fila de 10 ceros.
-    La exterior la repite `alto` veces (20), dando 20 filas.
-    """
+    """Crea y devuelve un tablero vacio (matriz de ceros)."""
     return [[0 for _ in range(ancho)] for _ in range(alto)]
 
 
 def mostrar_tablero(tablero):
-    """Imprime la matriz del tablero en la terminal, fila por fila."""
+    """Imprime la matriz del tablero en la terminal (util para depurar)."""
     for fila in tablero:
         print(" ".join(str(celda) for celda in fila))
-
-
-def fusionar(tablero, matriz, fila, columna):
-    """Copia los numeros distintos de 0 de una pieza dentro del tablero."""
-    for i in range(len(matriz)):
-        for j in range(len(matriz[i])):
-            if matriz[i][j] != 0:
-                tablero[fila + i][columna + j] = matriz[i][j]
 
 
 def es_valida(tablero, matriz, fila, columna):
     """Indica si la matriz de una pieza cabe en (fila, columna).
 
     Recorre SOLO las casillas ocupadas (distintas de 0) de la pieza y
-    comprueba que no salgan de los limites NI pisen una casilla ya ocupada.
+    comprueba que no salgan de los limites ni pisen una casilla ocupada.
     """
     alto = len(tablero)
     ancho = len(tablero[0])
@@ -45,14 +33,22 @@ def es_valida(tablero, matriz, fila, columna):
             if matriz[i][j] != 0:
                 f = fila + i
                 c = columna + j
-                # Fuera de los limites (izquierda, derecha o base).
+                # Fuera de los limites (izquierda, derecha o base)
                 if c < 0 or c >= ancho or f >= alto:
                     return False
                 # Choca con una casilla ya ocupada (ignora filas negativas:
-                # la pieza aun puede estar entrando por arriba).
+                # la pieza aun puede estar entrando por arriba)
                 if f >= 0 and tablero[f][c] != 0:
                     return False
     return True
+
+
+def fusionar(tablero, matriz, fila, columna):
+    """Copia los numeros distintos de 0 de la pieza dentro del tablero."""
+    for i in range(len(matriz)):
+        for j in range(len(matriz[i])):
+            if matriz[i][j] != 0:
+                tablero[fila + i][columna + j] = matriz[i][j]
 
 
 def lineas_completas(tablero):

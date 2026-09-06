@@ -1,24 +1,32 @@
-"""Leccion 7 - Colores neon.
+"""Leccion 8 - Sonidos y animaciones (version final del juego).
 
-El mismo Tetris de la Leccion 6, pero ahora con piezas de colores neon
-brillantes sobre fondo oscuro. Lo importante: la LOGICA no cambio, solo la
-forma de dibujar cada celda.
+El pulido final: un sonido al rotar, un sonido al eliminar filas y un destello
+al fusionar una pieza. El audio es opcional: si no hay archivos de sonido, el
+juego funciona igual. La logica de matrices sigue intacta.
 
-    python main.py
+    python main.py            # estilo neon
+    python main.py numeros    # estilo numeros
 
-Controles: flechas para mover/rotar/bajar, R reinicia, Esc sale.
+Controles: flechas para mover/rotar/bajar, barra espaciadora caida instantanea,
+R reinicia, Esc sale.
 """
+
+import sys
 
 
 def main():
     try:
-        from tetris import grafico
+        from tetris.grafico import jugar, ESTILO_NUMEROS, ESTILO_NEON
     except ImportError:
         print("Falta Pygame. Instala las dependencias con:")
         print("    pip install -r requirements.txt")
         return
 
-    grafico.ejecutar()
+    estilo = ESTILO_NEON
+    if len(sys.argv) > 1 and sys.argv[1].lower() == "numeros":
+        estilo = ESTILO_NUMEROS
+
+    jugar(estilo=estilo)
 
 
 if __name__ == "__main__":

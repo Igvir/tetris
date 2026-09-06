@@ -1,8 +1,8 @@
-"""Leccion 6: lineas completas, puntuacion y fin del juego.
+"""Logica del juego: la pieza activa, su movimiento y el estado global.
 
-Cuando una fila se llena por completo, desaparece y las de arriba bajan. Sumamos
-puntos segun cuantas lineas eliminamos a la vez. Y si una pieza nueva no cabe en
-la posicion inicial, el juego termina.
+Esta clase solo manipula matrices de numeros. No sabe nada de graficos ni de
+sonido; por eso se puede reutilizar tal cual en la version con numeros y en la
+version con neon.
 """
 
 from . import piezas
@@ -20,11 +20,14 @@ class Juego:
         self.puntuacion = 0
         self.lineas = 0
         self.terminado = False
+        # Datos de la pieza activa (se rellenan en nueva_pieza).
         self.pieza = None
         self.rotacion = 0
         self.fila = 0
         self.columna = 0
         self.nueva_pieza()
+
+    # --- Pieza activa -----------------------------------------------------
 
     def matriz_pieza_actual(self):
         """Devuelve la matriz de la rotacion actual de la pieza activa."""
@@ -41,11 +44,15 @@ class Juego:
                              self.fila, self.columna):
             self.terminado = True
 
+    # --- Movimiento -------------------------------------------------------
+
     def mover(self, dx):
         """Mueve la pieza dx columnas (-1 izquierda, +1 derecha) si es valido."""
         if tab.es_valida(self.tablero, self.matriz_pieza_actual(),
                          self.fila, self.columna + dx):
             self.columna += dx
+            return True
+        return False
 
     def rotar(self):
         """Pasa a la siguiente rotacion (ciclica) solo si la nueva cabe."""
@@ -53,22 +60,43 @@ class Juego:
         matriz = piezas.PIEZAS[self.pieza][siguiente]
         if tab.es_valida(self.tablero, matriz, self.fila, self.columna):
             self.rotacion = siguiente
+            return True
+        return False
 
     def bajar(self):
-        """Baja una fila. Si no puede, fusiona, elimina lineas y saca pieza nueva."""
+        """Baja una fila. Si no puede, fusiona, elimina lineas y saca pieza nueva.
+
+        Devuelve una tupla (fusiono, lineas_eliminadas) para que la capa de
+        presentacion pueda disparar sonidos y animaciones.
+        """
         if tab.es_valida(self.tablero, self.matriz_pieza_actual(),
                          self.fila + 1, self.columna):
             self.fila += 1
-        else:
-            tab.fusionar(self.tablero, self.matriz_pieza_actual(),
-                         self.fila, self.columna)
-            eliminadas = tab.eliminar_lineas(self.tablero)
-            self.lineas += eliminadas
-            self.puntuacion += PUNTOS_POR_LINEAS.get(eliminadas, 0)
-            self.nueva_pieza()
+            return (False, 0)
+
+        # La pieza aterrizo: se une al tablero.
+        tab.fusionar(self.tablero, self.matriz_pieza_actual(),
+                     self.fila, self.columna)
+        eliminadas = tab.eliminar_lineas(self.tablero)
+        self.lineas += eliminadas
+        self.puntuacion += PUNTOS_POR_LINEAS.get(eliminadas, 0)
+        self.nueva_pieza()
+        return (True, eliminadas)
+
+    def caida_rapida(self):
+        """Baja la pieza hasta el fondo de una sola vez y la fusiona."""
+        while tab.es_valida(self.tablero, self.matriz_pieza_actual(),
+                            self.fila + 1, self.columna):
+            self.fila += 1
+        return self.bajar()
+
+    # --- Presentacion -----------------------------------------------------
 
     def tablero_con_pieza(self):
-        """Devuelve una COPIA del tablero con la pieza activa dibujada."""
+        """Devuelve una COPIA del tablero con la pieza activa dibujada.
+
+        Se usa una copia para no modificar el tablero real hasta la fusion.
+        """
         copia = [fila[:] for fila in self.tablero]
         matriz = self.matriz_pieza_actual()
         for i in range(len(matriz)):
@@ -79,6 +107,16 @@ class Juego:
                     if 0 <= f < len(copia) and 0 <= c < len(copia[0]):
                         copia[f][c] = matriz[i][j]
         return copia
+
+    def celdas_pieza_actual(self):
+        """Lista de (fila, columna) ocupadas por la pieza activa en el tablero."""
+        celdas = []
+        matriz = self.matriz_pieza_actual()
+        for i in range(len(matriz)):
+            for j in range(len(matriz[i])):
+                if matriz[i][j] != 0:
+                    celdas.append((self.fila + i, self.columna + j))
+        return celdas
 
     def reiniciar(self):
         """Reinicia el juego a su estado inicial."""

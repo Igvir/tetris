@@ -1,30 +1,39 @@
-# Tetris con Matrices — Lección 7: Colores neón
+# Tetris con Matrices — Lección 8: Sonidos y animaciones (versión final)
 
-Esta rama corresponde a la **Lección 7**. ¡El salto visual! Pasamos de dibujar
-**números** a pintar cada pieza con su **color neón** sobre fondo oscuro. Lo más
-importante: **la lógica no cambió**. `juego.py`, `tablero.py` y `piezas.py`
-(salvo añadir el diccionario de colores) son los mismos de la lección anterior.
+Esta rama corresponde a la **Lección 8**, el pulido final del juego. Añadimos
+**sonidos** (al rotar y al eliminar filas) y una **animación** de destello al
+fusionar una pieza. El audio es **opcional**: si no hay archivos de sonido, el
+juego funciona igual. La lógica de matrices sigue intacta.
+
+Esta rama contiene el juego **completo**, equivalente a `main`.
 
 ## Qué aprenderás
-- Asociar cada número de pieza a un color neón.
-- Dibujar rectángulos con contorno claro para simular el brillo.
-- Comprobar el valor de separar la **lógica** de la **presentación**: cambiar el
-  aspecto sin tocar las reglas del juego.
+- Reproducir sonidos con `pygame.mixer` de forma opcional y segura.
+- Crear animaciones breves con un contador de fotogramas (sin bloquear el bucle).
+- Confirmar que la lógica no depende de la presentación.
 
 ## Instalar y ejecutar
 
 ```bash
 pip install -r requirements.txt
-python main.py
+python main.py            # estilo neón
+python main.py numeros    # estilo números
 ```
 
-Controles: ← → mover, ↑ rotar, ↓ bajar, R reiniciar (al terminar), Esc salir.
+Controles: ← → mover, ↑ rotar, ↓ bajar, barra espaciadora caída instantánea,
+R reiniciar, Esc salir.
 
-> Compara `git diff leccion-6-lineas-puntuacion leccion-7-neon`: verás que solo
-> cambiaron `piezas.py` (colores) y `grafico.py` (dibujo). La lógica está intacta.
+Los sonidos van en `assets/sonidos/` (`giro.wav`, `linea.wav`). Si no existen,
+el juego suena en silencio pero funciona igual.
+
+## Probar la lógica
+
+```bash
+python -m pytest tests/
+```
 
 ## Lecciones
-- Anterior: `git checkout leccion-6-lineas-puntuacion`
-- Siguiente: `git checkout leccion-8-sonidos-animaciones` (sonidos y animaciones)
+- Anterior: `git checkout leccion-7-neon`
+- Volver al juego completo: `git checkout main`
 
 La guía completa está en [docs/guia_estudiante.md](docs/guia_estudiante.md) de la rama `main`.
