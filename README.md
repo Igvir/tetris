@@ -83,6 +83,35 @@ tetris/
 - **[Guía del estudiante](docs/guia_estudiante.md)** — lecciones progresivas con prompts de Kiro.
 - **[Guía del instructor](docs/guia_instructor.md)** — planificación, errores comunes, soluciones y rúbrica.
 
+## 🌱 Recorrido paso a paso (ramas por lección)
+
+Para ver el avance del proyecto **lección por lección**, cada etapa vive en su
+propia rama de Git. Empiezas viendo la **matriz con números** y terminas en el
+estilo **neón** con sonidos. Cambia de rama con `git checkout <rama>` y ejecuta
+`python main.py`.
+
+| Rama | Qué se ve |
+|------|-----------|
+| `leccion-1-matriz-tablero` | La matriz del tablero 10×20 con números (en la terminal) |
+| `leccion-2-piezas` | Las piezas como matrices y sus rotaciones (en la terminal) |
+| `leccion-3-ventana-numeros` | Primera ventana de Pygame dibujando los números |
+| `leccion-4-pieza-cae` | Una pieza cae, se mueve y rota (números) |
+| `leccion-5-colisiones-fusion` | Las piezas se detienen y se acumulan (números) |
+| `leccion-6-lineas-puntuacion` | Líneas completas, puntuación y fin del juego (números) |
+| `leccion-7-neon` | El mismo juego, ahora con colores neón |
+| `leccion-8-sonidos-animaciones` | Versión final: sonidos y animaciones |
+
+```bash
+git checkout leccion-1-matriz-tablero   # empieza aquí
+python main.py
+# ... cuando termines, pasa a la siguiente:
+git checkout leccion-2-piezas
+```
+
+> La rama `main` contiene el juego completo como referencia. Las primeras
+> lecciones muestran los **números** de las matrices antes de llegar al color,
+> para entender primero la estructura de datos.
+
 ## 🧪 Pruebas
 
 ```bash
