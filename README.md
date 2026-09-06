@@ -153,6 +153,12 @@ git push -u origin tetris-nombre-apellido
 - Guardar el récord en un archivo.
 - Más efectos neón (resplandor, degradados, destello al hacer un Tetris).
 
+## ☕ Apóyame
+
+Si este proyecto te resulta útil para aprender o enseñar, puedes invitarme un café. ¡Gracias por el apoyo!
+
+<a href="https://buymeacoffee.com/igvir" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50" width="210"></a>
+
 ## 📄 Licencia
 
 Proyecto educativo de uso libre.
