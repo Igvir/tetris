@@ -1,6 +1,11 @@
-# Guía del Estudiante - Tetris con Matrices
+# Guía del Estudiante (con Kiro) - Tetris con Matrices
 
 ¡Bienvenido! En este curso vas a construir tu propio **Tetris** en Python usando **Kiro** y una forma de trabajar llamada **spec driven development** (desarrollo guiado por especificaciones).
+
+> Esta es la ruta **con asistente**. Si prefieres aprender escribiendo todo el
+> código a mano, sin ningún agente de IA, usa la versión hermana
+> [guia_estudiante_sin_kiro.md](guia_estudiante_sin_kiro.md). Ambas construyen el
+> mismo juego y siguen las mismas 8 lecciones.
 
 Si ya hiciste el curso de **Snake**, aprendiste variables, listas, tuplas, bucles, condicionales y una probadita de Pygame. Ahora damos el siguiente paso: vas a dominar las **matrices (listas de listas)**. Y lo mejor de todo: verás resultados en pantalla desde la primera lección.
 

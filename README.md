@@ -70,8 +70,9 @@ tetris/
 │   └── audio.py      # Sonidos opcionales con pygame.mixer
 ├── assets/sonidos/   # Sonidos (giro.wav, linea.wav) — opcionales
 ├── docs/
-│   ├── guia_estudiante.md   # Curso paso a paso para el estudiante
-│   └── guia_instructor.md   # Guía docente: planificación, evaluación, soluciones
+│   ├── guia_estudiante.md            # Curso paso a paso (con Kiro)
+│   ├── guia_estudiante_sin_kiro.md   # Curso paso a paso (sin agente, a mano)
+│   └── guia_instructor.md            # Guía docente: planificación, evaluación, soluciones
 ├── tests/            # Pruebas de la lógica de matrices
 ├── main.py           # Punto de entrada
 ├── requirements.txt
@@ -80,8 +81,11 @@ tetris/
 
 ## 📚 Guías del curso
 
-- **[Guía del estudiante](docs/guia_estudiante.md)** — lecciones progresivas con prompts de Kiro.
-- **[Guía del instructor](docs/guia_instructor.md)** — planificación, errores comunes, soluciones y rúbrica.
+Hay **dos rutas** para el estudiante, con las mismas 8 lecciones y el mismo juego final. Elige la que prefieras:
+
+- **[Guía del estudiante (con Kiro)](docs/guia_estudiante.md)** — construye el juego con la ayuda de Kiro y *spec driven development*, usando prompts.
+- **[Guía del estudiante (sin Kiro)](docs/guia_estudiante_sin_kiro.md)** — aprende a programar escribiendo **todo el código a mano**, sin ningún agente de IA.
+- **[Guía del instructor](docs/guia_instructor.md)** — planificación, errores comunes, soluciones y rúbrica (cubre ambas rutas).
 
 ## 🌱 Recorrido paso a paso (ramas por lección)
 

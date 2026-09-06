@@ -118,8 +118,9 @@ tetris/
 ├── main.py               # Punto de entrada: abre la ventana de Pygame y ejecuta el juego
 ├── tests/                # Pruebas de la lógica de matrices
 ├── docs/
-│   ├── guia_estudiante.md   # Curso paso a paso para el estudiante
-│   └── guia_instructor.md   # Guía docente: planificación, evaluación y soluciones
+│   ├── guia_estudiante.md            # Curso paso a paso (con Kiro)
+│   ├── guia_estudiante_sin_kiro.md   # Curso paso a paso (sin agente, a mano)
+│   └── guia_instructor.md            # Guía docente: planificación, evaluación y soluciones
 ├── requirements.txt
 └── README.md
 ```
@@ -288,7 +289,21 @@ git push -u origin tetris-nombre-apellido
 # Abrir el Pull Request desde la interfaz de GitHub
 ```
 
-### `docs/guia_estudiante.md`
+### Dos rutas para el estudiante
+
+El curso ofrece **dos guías del estudiante** con la misma progresión de 8
+lecciones y el mismo juego final; el estudiante elige una:
+
+- **Con Kiro** (`guia_estudiante.md`): construye el juego con ayuda de un
+  asistente y *spec driven development*, escribiendo prompts.
+- **Sin Kiro** (`guia_estudiante_sin_kiro.md`): aprende a programar escribiendo
+  todo el código a mano, sin ningún agente de IA.
+
+Ambas guías se enlazan mutuamente y comparten mapeo de piezas, colores neón,
+algoritmos y las ramas de Git por lección. La única diferencia es el **método de
+trabajo**: prompts frente a escritura manual y depuración autónoma.
+
+### `docs/guia_estudiante.md` (con Kiro)
 
 Curso paso a paso, estructurado en **lecciones/sesiones** que siguen las etapas del proyecto. Cada lección incluye:
 
@@ -297,6 +312,16 @@ Curso paso a paso, estructurado en **lecciones/sesiones** que siguen las etapas 
 - El **prompt de Kiro** sugerido y cómo usar el flujo de spec driven development para construir la etapa.
 - Fragmentos de código explicados y el **resultado esperado** (qué debe verse en la ventana).
 - Una actividad práctica y retos opcionales para estudiantes avanzados.
+
+### `docs/guia_estudiante_sin_kiro.md` (sin Kiro)
+
+Misma estructura de 8 lecciones, pero orientada a la escritura manual del código:
+
+- En lugar de prompts, una sección **"Escribe el código"** con el código que el
+  estudiante debe teclear, explicado por bloques y coherente con los módulos reales.
+- Explica el flujo de trabajo **autónomo**: escribir, ejecutar, leer los errores y depurar.
+- Indica la **rama de Git** de cada lección para comparar el avance con la solución.
+- Mantiene objetivos, conceptos nuevos, resultado esperado, actividad práctica y los mismos retos avanzados.
 
 Mapa lección → etapa del proyecto:
 

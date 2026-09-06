@@ -128,6 +128,13 @@ Las tareas siguen la progresión del tutorial: siempre se trabaja sobre una vent
     - Añadir ideas de mejora (niveles de velocidad, pieza siguiente, guardado de récord, efectos neón extra).
     - _Requisitos: 11.7_
 
+- [x] 14b. Escribir la guía del estudiante sin Kiro (`docs/guia_estudiante_sin_kiro.md`)
+  - Crear una segunda guía con las mismas 8 lecciones, sin prompts ni agente, guiando a escribir el código a mano.
+  - Explicar el flujo autónomo (escribir, ejecutar, leer errores, depurar) e indicar la rama de Git de cada lección.
+  - Incluir objetivos, conceptos, resultado esperado, actividad práctica y los retos avanzados; enlazar con la guía con Kiro.
+  - Enlazar ambas guías entre sí y actualizar README, spec y guía del instructor para documentar las dos rutas.
+  - _Requisitos: 11b.1, 11b.2, 11b.3, 11b.4, 11b.5, 11b.6, 11b.7, 12.8_
+
 - [x] 15. Escribir la guía del instructor (`docs/guia_instructor.md`)
   - [x] 15.1 Planificación por sesiones y objetivos
     - Proponer la planificación por sesiones con duración estimada, objetivos y puntos clave a reforzar.
