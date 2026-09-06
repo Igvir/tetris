@@ -19,6 +19,19 @@ NUMERO_PIEZA = {
     "L": 7,
 }
 
+# Colores neon por numero de pieza. El numero de la matriz decide el color.
+# Esta es la unica novedad de la Leccion 7: la LOGICA no cambia, solo el color.
+COLORES = {
+    0: (10, 10, 20),      # fondo oscuro (casilla vacia)
+    1: (0, 255, 255),     # I - cian neon
+    2: (255, 255, 0),     # O - amarillo neon
+    3: (255, 0, 255),     # T - magenta neon
+    4: (57, 255, 20),     # S - verde neon
+    5: (255, 49, 49),     # Z - rojo/rosa neon
+    6: (77, 77, 255),     # J - azul neon
+    7: (255, 149, 0),     # L - naranja neon
+}
+
 # Cada pieza es una lista de matrices de rotacion.
 PIEZAS = {
     "I": [

@@ -1,7 +1,8 @@
-"""Leccion 6 - Lineas, puntuacion y fin del juego.
+"""Leccion 7 - Colores neon.
 
-Cuando llenas una fila entera, desaparece y sumas puntos. Si el tablero se llena
-y una pieza nueva no cabe, el juego termina (pulsa R para reiniciar).
+El mismo Tetris de la Leccion 6, pero ahora con piezas de colores neon
+brillantes sobre fondo oscuro. Lo importante: la LOGICA no cambio, solo la
+forma de dibujar cada celda.
 
     python main.py
 
