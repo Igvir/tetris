@@ -24,21 +24,27 @@ vas a dominar las **matrices (listas de listas)**.
 ## Paso 0: Prepara tu copia del proyecto y tu rama de trabajo
 
 Antes de escribir nada, deja lista tu copia del proyecto y **crea una rama con tu
-nombre** donde harás todo el curso. Así conservas la rama `main` intacta como
-referencia y, al terminar, entregas tu trabajo con un Pull Request desde tu rama.
+nombre a partir de la rama `inicio`**, que es la plantilla de partida del curso.
+Ahí los módulos del juego están como esqueleto (con comentarios `TODO`) para que
+tú los escribas. Así conservas la rama `main` intacta como referencia y, al
+terminar, entregas tu trabajo con un Pull Request desde tu rama.
 
 ```bash
 # 1. Clona el repositorio (o haz un fork y clona el tuyo)
 git clone <url-del-repositorio>
 cd tetris
 
-# 2. Crea tu rama de trabajo con tu nombre y cámbiate a ella
-git checkout -b tetris-nombre-apellido
+# 2. Crea tu rama de trabajo a partir de `inicio` y cámbiate a ella
+git checkout -b tetris-nombre-apellido origin/inicio
 ```
 
-Cuando creas tu rama a partir de `main`, **esta guía ya viene incluida** en
-`docs/` dentro de tu rama, junto con el resto del proyecto. No tienes que
+Cuando creas tu rama a partir de `inicio`, **esta guía ya viene incluida** en
+`docs/` dentro de tu rama, junto con el andamiaje del proyecto. No tienes que
 descargarla aparte: ábrela desde tu editor y síguela desde ahí.
+
+> La rama `inicio` es la **plantilla**: al ejecutar `python main.py` antes de
+> empezar, verás un mensaje que indica qué falta implementar (es normal). La rama
+> `main` contiene la **solución completa** por si quieres compararla al final.
 
 > Trabaja siempre en **tu rama** (`tetris-nombre-apellido`), no en `main`. Guarda
 > tus avances con `git add` y `git commit` a menudo. Al final del curso subirás

@@ -153,7 +153,9 @@ El curso avanza en versiones incrementales usando **siempre una ventana gráfica
 3. EL código DEBERÁ estar comentado en español, explicando el uso de las matrices.
 4. LA lógica del juego (matrices, colisiones, rotaciones) DEBERÁ estar separada de la capa de presentación (Pygame) para poder reutilizarse.
 5. EL tutorial DEBERÁ presentar el desarrollo en etapas incrementales, siguiendo el estilo progresivo del curso Snake.
-6. EL `README.md` DEBERÁ incluir las instrucciones de entrega de la asignación mediante Git: clonar el repositorio, crear una rama con el nombre del estudiante y abrir un Pull Request al terminar.
+6. EL `README.md` DEBERÁ incluir las instrucciones de entrega de la asignación mediante Git: clonar el repositorio, crear una rama con el nombre del estudiante a partir de la rama plantilla `inicio` y abrir un Pull Request al terminar.
+6a. EL repositorio DEBERÁ incluir una rama `inicio` (plantilla de partida) con el andamiaje del proyecto y los módulos del juego como esqueleto con `TODO`, separada de la rama `main` que contiene la solución completa.
+6b. LA documentación (guías, README y spec) DEBERÁ indicar que el estudiante parte de la rama `inicio`, y DEBERÁ mantenerse sincronizada con ella (ver steering `sincronizacion-rama-inicio.md`).
 7. LAS instrucciones de entrega DEBERÁN incluir los comandos concretos de Git (clonar, crear y cambiar de rama, confirmar, subir la rama y abrir el PR).
 8. LAS instrucciones DEBERÁN explicar que el Pull Request es la evidencia de que el estudiante completó la asignación.
 

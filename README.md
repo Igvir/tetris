@@ -94,8 +94,9 @@ propia rama de Git. Empiezas viendo la **matriz con números** y terminas en el
 estilo **neón** con sonidos. Cambia de rama con `git checkout <rama>` y ejecuta
 `python main.py`.
 
-| Rama | Qué se ve |
-|------|-----------|
+| Rama | Qué contiene |
+|------|--------------|
+| `inicio` | **Plantilla de partida**: andamiaje del proyecto con los módulos como esqueleto (`TODO`). Aquí empiezas tú. |
 | `leccion-1-matriz-tablero` | La matriz del tablero 10×20 con números (en la terminal) |
 | `leccion-2-piezas` | Las piezas como matrices y sus rotaciones (en la terminal) |
 | `leccion-3-ventana-numeros` | Primera ventana de Pygame dibujando los números |
@@ -104,17 +105,22 @@ estilo **neón** con sonidos. Cambia de rama con `git checkout <rama>` y ejecuta
 | `leccion-6-lineas-puntuacion` | Líneas completas, puntuación y fin del juego (números) |
 | `leccion-7-neon` | El mismo juego, ahora con colores neón |
 | `leccion-8-sonidos-animaciones` | Versión final: sonidos y animaciones |
+| `main` | **Solución completa** del juego (referencia y meta). |
+
+Para hacer el curso, parte de `inicio`:
 
 ```bash
-git checkout leccion-1-matriz-tablero   # empieza aquí
-python main.py
-# ... cuando termines, pasa a la siguiente:
-git checkout leccion-2-piezas
+git checkout -b tetris-nombre-apellido origin/inicio   # tu rama de trabajo
+python main.py    # verás qué falta implementar (es normal al empezar)
 ```
 
-> La rama `main` contiene el juego completo como referencia. Las primeras
-> lecciones muestran los **números** de las matrices antes de llegar al color,
-> para entender primero la estructura de datos.
+Y si quieres ver la solución de una etapa concreta, consulta su rama de lección
+(por ejemplo `git checkout leccion-3-ventana-numeros`) y ejecútala con
+`python main.py`.
+
+> `inicio` es el **punto de partida** (esqueleto con `TODO`) y `main` es la
+> **solución completa**. Las primeras lecciones muestran los **números** de las
+> matrices antes de llegar al color, para entender primero la estructura de datos.
 
 ## 🧪 Pruebas
 
@@ -131,8 +137,8 @@ La entrega se realiza mediante **Git**. Debes crear una rama con tu nombre y abr
 git clone <url-del-repositorio>
 cd tetris
 
-# 2. Crea una rama con tu nombre
-git checkout -b tetris-nombre-apellido
+# 2. Crea una rama con tu nombre a partir de la plantilla `inicio`
+git checkout -b tetris-nombre-apellido origin/inicio
 
 # 3. Trabaja en tu solución y guarda los cambios
 git add .

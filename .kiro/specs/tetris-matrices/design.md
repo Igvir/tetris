@@ -271,7 +271,7 @@ Puerta de entrada del repositorio: descripción, objetivos de aprendizaje, requi
 Incluye además una sección **"Entrega de la asignación"** con el flujo de Git que debe seguir el estudiante, en la línea de la "Guía GIT" del curso Snake:
 
 1. Clonar (o hacer fork de) el repositorio.
-2. Crear una rama con su nombre, por ejemplo `git checkout -b tetris-juan-perez`.
+2. Crear una rama con su nombre a partir de la plantilla `inicio`, por ejemplo `git checkout -b tetris-juan-perez origin/inicio`.
 3. Trabajar en su solución y confirmar los cambios.
 4. Subir la rama con `git push -u origin <rama>`.
 5. Abrir un **Pull Request** hacia la rama principal.
@@ -281,7 +281,7 @@ Se explica que el Pull Request es la **evidencia de que completó la asignación
 ```bash
 git clone <url-del-repositorio>
 cd tetris
-git checkout -b tetris-nombre-apellido
+git checkout -b tetris-nombre-apellido origin/inicio
 # ... trabajar y guardar cambios ...
 git add .
 git commit -m "Completa la asignacion de Tetris"
@@ -343,6 +343,27 @@ Guía docente separada, pensada para quien imparte el curso. Incluye:
 - **Soluciones esperadas** de las actividades prácticas de cada sesión.
 - **Criterios de evaluación y rúbrica**, en la línea del curso Snake (participación, tareas y proyecto final).
 - Recomendaciones para **usar Kiro en el aula** (crear specs, escribir prompts y revisar el código generado).
+
+## Organización del repositorio en ramas
+
+El repositorio separa el **punto de partida** de la **solución** para que el
+estudiante tenga algo que construir:
+
+- **`inicio`**: plantilla de partida. Mismo andamiaje que `main` (estructura,
+  `docs/`, `README.md`, `requirements.txt`, `assets/`, `tools/`, `tests/`), pero
+  los módulos de `tetris/` son un **esqueleto**: firmas y docstrings idénticos a
+  los de `main`, con el cuerpo reemplazado por `raise NotImplementedError(...)` y
+  comentarios `TODO` que citan la lección. Como excepción didáctica, la pieza
+  `T` queda resuelta como ejemplo en `piezas.py` y `COLORES` solo trae la entrada
+  del fondo (`0`). `main.py` captura `NotImplementedError` y muestra un mensaje
+  amable indicando qué falta.
+- **`leccion-1-...` a `leccion-8-...`**: la solución de cada etapa, para comparar.
+- **`main`**: la solución completa y la vitrina del proyecto (etiquetada `v1.0`).
+
+El estudiante crea su rama de trabajo desde `inicio`
+(`git checkout -b tetris-nombre origin/inicio`) y la completa siguiendo las guías.
+La coherencia entre `inicio` y `main` se mantiene con el steering
+`.kiro/steering/sincronizacion-rama-inicio.md`.
 
 ## Progresión del tutorial (etapas)
 
