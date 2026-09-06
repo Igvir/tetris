@@ -11,9 +11,10 @@ la mejor forma de aprender a programar de verdad.
 > con la ayuda de **Kiro** y *spec driven development*. Ambas llegan al mismo
 > resultado; esta es la ruta **autónoma**, para programar por tu cuenta.
 
-Si ya hiciste el curso de **Snake**, aprendiste variables, listas, tuplas,
-bucles, condicionales y una probadita de Pygame. Ahora damos el siguiente paso:
-vas a dominar las **matrices (listas de listas)**.
+Si ya hiciste el curso de **[Snake](https://github.com/Igvir/snake_game)**,
+aprendiste variables, listas, tuplas, bucles, condicionales y una probadita de
+Pygame. Ahora damos el siguiente paso: vas a dominar las **matrices (listas de
+listas)**.
 
 > La gran idea de este curso: **en Tetris, TODO es una matriz.** El tablero es
 > una matriz, cada pieza es una matriz, rotar es cambiar de matriz y "pegar" una

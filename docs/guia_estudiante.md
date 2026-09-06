@@ -7,7 +7,7 @@
 > [guia_estudiante_sin_kiro.md](guia_estudiante_sin_kiro.md). Ambas construyen el
 > mismo juego y siguen las mismas 8 lecciones.
 
-Si ya hiciste el curso de **Snake**, aprendiste variables, listas, tuplas, bucles, condicionales y una probadita de Pygame. Ahora damos el siguiente paso: vas a dominar las **matrices (listas de listas)**. Y lo mejor de todo: verás resultados en pantalla desde la primera lección.
+Si ya hiciste el curso de **[Snake](https://github.com/Igvir/snake_game)**, aprendiste variables, listas, tuplas, bucles, condicionales y una probadita de Pygame. Ahora damos el siguiente paso: vas a dominar las **matrices (listas de listas)**. Y lo mejor de todo: verás resultados en pantalla desde la primera lección.
 
 > La gran idea de este curso: **en Tetris, TODO es una matriz.** El tablero es una matriz, cada pieza es una matriz, rotar es cambiar de matriz y "pegar" una pieza es copiar una matriz dentro de otra.
 

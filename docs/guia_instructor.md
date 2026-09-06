@@ -1,6 +1,6 @@
 # Guía del Instructor - Tetris con Matrices
 
-Esta guía docente acompaña al curso **Tetris con Matrices**, la evolución del curso de **Snake**. Mientras Snake introdujo los fundamentos de Python, este proyecto tiene un objetivo conceptual claro: enseñar el **manejo de matrices (listas de listas)** construyendo un Tetris con **Kiro** y **spec driven development**.
+Esta guía docente acompaña al curso **Tetris con Matrices**, la evolución del curso de **[Snake](https://github.com/Igvir/snake_game)**. Mientras Snake introdujo los fundamentos de Python, este proyecto tiene un objetivo conceptual claro: enseñar el **manejo de matrices (listas de listas)** construyendo un Tetris con **Kiro** y **spec driven development**.
 
 Está pensada para quien imparte el curso a estudiantes principiantes-intermedios (edad 11-12 en adelante). Aquí encontrarás la planificación por sesiones, los errores comunes que anticipar, las soluciones de las actividades, la rúbrica de evaluación y recomendaciones para usar Kiro en el aula.
 
@@ -47,69 +47,121 @@ El curso se organiza en **8 sesiones** que siguen la progresión de etapas del p
 
 > Recomendación: dedica los primeros 10-15 minutos de cada sesión a repasar lo anterior y ejecutar la versión que quedó de la clase pasada, para que el avance sea visible y motivador (estilo Snake).
 
+> **Cómo leer cada sesión.** Para cada una encontrarás: los **objetivos de aprendizaje** (qué sabrá hacer el estudiante), los **fundamentos de programación** que se practican (conceptos generales de Python transferibles a cualquier proyecto), el **concepto de matrices** que aterriza esa sesión, los **elementos pedagógicos** (cómo enseñarlo: analogías, demostraciones, preguntas), la **conexión con [Snake](https://github.com/Igvir/snake_game)** (para apoyarte en lo ya conocido) y el **cierre esperado** (evidencia observable de que la sesión funcionó).
+
 ### Sesión 1 — Matrices y el tablero 10×20
-- **Objetivos:** entender qué es una matriz (lista de listas); crear el tablero como matriz de 20×10; leer/escribir con `tablero[fila][columna]`.
-- **Puntos clave a reforzar:**
-  - El orden **fila, luego columna**. Repítelo hasta el cansancio.
-  - Por qué los índices van de `0` a `n-1` (la fila 19 y la columna 9 son las últimas).
-  - La lista por comprensión `[[0 for _ in range(ancho)] for _ in range(alto)]`.
-- **Cierre esperado:** el estudiante crea y muestra un tablero vacío en la terminal.
+
+- **Objetivos de aprendizaje:**
+  - Explicar con sus palabras qué es una matriz (lista de listas).
+  - Crear el tablero como matriz de 20 filas × 10 columnas llena de ceros.
+  - Leer y escribir una casilla con `tablero[fila][columna]`.
+- **Fundamentos de programación:** listas anidadas; la lista por comprensión `[[0 for _ in range(ancho)] for _ in range(alto)]`; el uso de constantes (`ANCHO`, `ALTO`) para no repetir "números mágicos"; indexación desde `0`.
+- **Concepto de matrices:** una matriz es una cuadrícula de datos; el primer índice elige la fila (vertical) y el segundo la columna (horizontal).
+- **Elementos pedagógicos:**
+  - Analogía visual: compara la matriz con un cuaderno cuadriculado o el tablero de un juego de mesa; pide que dibujen la cuadrícula en papel y marquen `[0][0]` y `[19][9]`.
+  - Demostración en vivo: crea el tablero y cámbialo casilla por casilla mientras lo imprimes, para que vean la relación índice → posición.
+  - Pregunta guía: "¿por qué la última casilla es `[19][9]` y no `[20][10]`?" (afianza que los índices empiezan en 0).
+- **Conexión con Snake:** en Snake usaron listas simples (el cuerpo de la serpiente); aquí damos el salto a una **lista de listas**. Es el mismo tipo de dato, un nivel más arriba.
+- **Cierre esperado:** el estudiante crea y muestra un tablero vacío en la terminal, con un `1` colocado a mano en dos esquinas.
 
 ### Sesión 2 — Piezas y rotaciones
-- **Objetivos:** representar cada pieza como matriz pequeña; entender la rotación como **cambio de matriz** (no cálculo).
-- **Puntos clave a reforzar:**
-  - Cada pieza guarda una **lista de rotaciones** ya escritas.
-  - La rotación cíclica con el operador módulo `%`.
-  - El mapeo de números I=1 … L=7 y por qué es constante.
-- **Cierre esperado:** imprimir las rotaciones de la T y la I y ver los giros.
+
+- **Objetivos de aprendizaje:**
+  - Representar cada pieza como una matriz pequeña con su número identificador.
+  - Entender que rotar es **cambiar de matriz**, no calcular.
+  - Elegir una pieza al azar.
+- **Fundamentos de programación:** diccionarios (`PIEZAS`, `NUMERO_PIEZA`); listas de listas anidadas; el módulo `random`; el operador módulo `%` para el ciclo de rotaciones.
+- **Concepto de matrices:** una forma (la letra de la pieza) se codifica como datos; los `0` son huecos y el número dibuja la figura.
+- **Elementos pedagógicos:**
+  - Descubrimiento dirigido: muestra la matriz de la T y pide que "vean" la letra siguiendo los `3`.
+  - Trabajo con papel: que escriban a mano las dos rotaciones de la I antes de teclearlas; discute por qué la O necesita una sola.
+  - Contraste conceptual: contrasta "rotar con matemáticas" (difícil) frente a "elegir la siguiente matriz de una lista" (una decisión de diseño con datos).
+- **Conexión con Snake:** en Snake una decisión (la dirección) cambiaba el comportamiento; aquí una decisión de diseño (guardar las rotaciones como datos) simplifica el código. Buena ocasión para hablar de "datos en vez de lógica".
+- **Cierre esperado:** imprimir las rotaciones de la T y la I y observar los giros.
 
 ### Sesión 3 — Ventana de Pygame con números
-- **Objetivos:** abrir la ventana, dibujar la cuadrícula 10×20 y el número de cada casilla.
-- **Puntos clave a reforzar:**
-  - El bucle de juego y el manejo del evento de cierre.
-  - Recorrer la matriz con dos `for` anidados (fila exterior, columna interior).
-  - La correspondencia `x = col * TAM`, `y = fila * TAM`.
+
+- **Objetivos de aprendizaje:**
+  - Abrir una ventana de Pygame y dibujar la cuadrícula 10×20.
+  - Dibujar el número de cada casilla recorriendo la matriz.
+- **Fundamentos de programación:** el **bucle de juego** (`while`); el manejo de eventos (cierre de ventana); bucles `for` anidados para recorrer una estructura 2D; conversión de coordenadas de matriz a píxeles.
+- **Concepto de matrices:** recorrer una matriz completa = dos bucles anidados (fila exterior, columna interior); la posición en pantalla se deriva de los índices: `x = col * TAM`, `y = fila * TAM`.
+- **Elementos pedagógicos:**
+  - Puente: recuérdales que los datos son los mismos de las sesiones 1-2; solo cambia **cómo los mostramos** (de terminal a ventana).
+  - Demostración: cambia `TAM` en vivo para que vean que la matriz es independiente de su tamaño en pantalla.
+  - Verbaliza el recorrido: "por cada fila, por cada columna, dibuja". Repite ese patrón, que reaparecerá en todas las sesiones gráficas.
+- **Conexión con Snake:** retoma el bucle de juego y `pygame` de Snake; aquí el bucle además **dibuja una matriz**, no solo posiciones sueltas.
 - **Cierre esperado:** ver la cuadrícula y algunos números dibujados en la ventana.
 
 ### Sesión 4 — La pieza que cae
-- **Objetivos:** modelar el estado con la clase `Juego`; mover, bajar y rotar.
-- **Puntos clave a reforzar:**
-  - Qué guarda el estado (`pieza`, `rotacion`, `fila`, `columna`).
-  - Descenso automático por tiempo vs. teclas del jugador.
-  - Rotación cíclica que solo se aplica si es válida.
+
+- **Objetivos de aprendizaje:**
+  - Modelar el estado del juego con una **clase** `Juego`.
+  - Mover, rotar y bajar la pieza, respondiendo al teclado y al tiempo.
+- **Fundamentos de programación:** introducción a **clases y objetos** (estado + métodos en un solo lugar); métodos que modifican atributos (`self.fila`, `self.columna`); manejo de teclado; temporización con el reloj de Pygame.
+- **Concepto de matrices:** la pieza "vive" en una posición `(fila, columna)` del tablero; mover/rotar es cambiar esa posición o el índice de rotación, sin tocar todavía el tablero.
+- **Elementos pedagógicos:**
+  - Justifica la clase: antes teníamos variables sueltas; ahora conviene **agruparlas**. Compáralo con una ficha que "sabe" dónde está y cómo girar.
+  - Demostración de la rotación cíclica: imprime `self.rotacion` al pulsar la tecla para ver el ciclo `0 → 1 → 2 → 3 → 0`.
+  - Pregunta abierta: "¿qué pasa si la pieza se sale por el borde?" (deja la duda; se resuelve en la sesión 5).
+- **Conexión con Snake:** en Snake el movimiento y el bucle temporal ya aparecían; aquí los reorganizamos dentro de una clase, un paso hacia código más estructurado.
 - **Cierre esperado:** una pieza baja sola y responde a las teclas.
 
 ### Sesión 5 — Colisiones y fusión
-- **Objetivos:** validar posiciones (`es_valida`) y fusionar la pieza en el tablero.
-- **Puntos clave a reforzar:**
-  - Recorrer **solo casillas ocupadas** (`!= 0`) de la pieza.
-  - La posición real `f = fila + i`, `c = columna + j`.
-  - Fusionar es **copiar** números, no ceros.
+
+- **Objetivos de aprendizaje:**
+  - Validar si una posición de la pieza es legal (`es_valida`).
+  - Fusionar la pieza en el tablero al aterrizar, para que se acumule.
+- **Fundamentos de programación:** funciones que devuelven booleanos; recorrer una estructura filtrando (`if celda != 0`); coordenadas relativas vs. absolutas (`f = fila + i`, `c = columna + j`); pensar en casos límite (bordes, casillas ocupadas).
+- **Concepto de matrices:** copiar una matriz pequeña dentro de otra grande respetando un desfase; leer dos matrices "a la vez" para detectar choques.
+- **Elementos pedagógicos:**
+  - Descomposición del problema: separa "¿cabe aquí?" (`es_valida`) de "pégala" (`fusionar`); enseña a resolver un problema partiéndolo en piezas.
+  - Experimento controlado: propón quitar la comprobación de bordes para provocar un `IndexError` a propósito y luego arreglarlo; el error se convierte en aprendizaje.
+  - Pregunta clave: "¿por qué copiamos solo las casillas con número y no los ceros?" (evita borrar lo ya colocado).
+- **Conexión con Snake:** en Snake ya detectaban colisiones (con paredes y con el cuerpo); aquí la colisión se comprueba **entre dos matrices**, una versión más general de la misma idea.
 - **Cierre esperado:** las piezas se detienen y se acumulan.
 
 ### Sesión 6 — Líneas, puntuación y fin del juego
-- **Objetivos:** eliminar filas completas, sumar puntos y detectar el fin.
-- **Puntos clave a reforzar:**
-  - Fila completa = sin ningún `0`.
-  - Reconstruir la matriz añadiendo filas vacías **arriba**.
-  - Fin del juego cuando la pieza nueva no cabe.
-- **Cierre esperado:** un Tetris jugable y completo (en estilo números).
+
+- **Objetivos de aprendizaje:**
+  - Detectar y eliminar filas completas desplazando el resto hacia abajo.
+  - Sumar puntos y detectar el fin del juego.
+- **Fundamentos de programación:** filtrado de listas por comprensión (`[fila for fila in tablero if 0 in fila]`); reconstruir una estructura; el operador `in`; diccionarios para tablas de puntuación; condiciones de fin de juego.
+- **Concepto de matrices:** una fila (sublista) es "completa" si no tiene ningún `0`; eliminarla y reponer filas vacías **arriba** hace que el resto "caiga".
+- **Elementos pedagógicos:**
+  - Demostración paso a paso: llena una fila a mano y muestra cómo desaparece y baja lo de arriba; usa un tablero pequeño para que se vea claro.
+  - Diseño con los estudiantes: define juntos la tabla de puntos (1=100, 2=300, 3=500, 4=800) y discute por qué premiar más las jugadas grandes.
+  - Cierre del arco: aquí el juego ya es completo y jugable; celébralo, refuerza la motivación (ver la sección de ritmo).
+- **Conexión con Snake:** la puntuación y el game over ya existían en Snake; aquí la "condición de fin" surge de la propia matriz (una pieza nueva que no cabe).
+- **Cierre esperado:** un Tetris jugable y completo en estilo números.
 
 ### Sesión 7 — Estilo neón
-- **Objetivos:** cambiar la presentación a colores neón sin tocar la lógica.
-- **Puntos clave a reforzar:**
-  - **La lógica no cambia**; solo la función que dibuja una celda.
-  - El diccionario `COLORES` (número → RGB) y el fondo oscuro.
-  - Separación datos/presentación como buena práctica.
+
+- **Objetivos de aprendizaje:**
+  - Cambiar la presentación de números a colores neón.
+  - Comprobar que la lógica **no cambia**: solo mejora la capa visual.
+- **Fundamentos de programación:** el principio de **separación de responsabilidades** (datos/lógica vs. presentación); diccionarios de configuración (`COLORES`); pensar en "una sola cosa que cambiar".
+- **Concepto de matrices:** la misma matriz de siempre; antes dibujábamos su número, ahora pintamos su color según ese número.
+- **Elementos pedagógicos:**
+  - Momento "aha": pídeles comparar `git diff` entre la lección 6 y la 7 para que **vean** que la lógica no se tocó. Es la lección de arquitectura más importante del curso.
+  - Personalización: invita a cambiar la paleta de `COLORES`; la implicación emocional aumenta el aprendizaje.
+  - Metacognición: pregunta "¿por qué fue tan fácil cambiar el aspecto?" y guíalos hasta "porque separamos datos de presentación".
+- **Conexión con Snake:** en Snake el dibujo y la lógica estaban más entrelazados; aquí se ve el beneficio de tenerlos separados, una buena práctica profesional.
 - **Cierre esperado:** el mismo Tetris con piezas neón brillantes.
 
 ### Sesión 8 — Sonidos, animaciones y proyecto final
-- **Objetivos:** añadir sonidos y animaciones; iniciar el proyecto final/retos.
-- **Puntos clave a reforzar:**
-  - Audio **opcional y degradable** (`try/except`).
-  - Animaciones cortas por contador de fotogramas (no bloquean el bucle).
-  - Todo vive en la presentación; la lógica sigue intacta.
-- **Cierre esperado:** juego pulido y elección de un reto para el proyecto final.
+
+- **Objetivos de aprendizaje:**
+  - Añadir sonidos y una animación breve.
+  - Elegir y arrancar un reto como proyecto final.
+- **Fundamentos de programación:** manejo de errores con `try/except` (**degradación segura**); recursos externos opcionales (archivos que pueden faltar); animaciones no bloqueantes con un contador de fotogramas; leer código ajeno para extenderlo.
+- **Concepto de matrices:** los efectos usan datos que ya tenemos (celdas recién fusionadas, filas completas); nada de esto cambia la lógica de matrices.
+- **Elementos pedagógicos:**
+  - Robustez: demuestra que borrar un `.wav` **no rompe** el juego; enseña a diseñar código tolerante a fallos.
+  - Autonomía: la sesión abre los retos; deja que cada estudiante elija uno y lo planifique. Es el paso de "seguir la guía" a "crear".
+  - Cierre del curso: recapitula el arco completo (matriz → juego → neón → pulido) y refuerza la idea central de que **todo era una matriz**.
+- **Conexión con Snake:** cierra el ciclo iniciado en Snake: de los fundamentos a un proyecto completo, pulido y personalizable.
+- **Cierre esperado:** juego pulido y un reto elegido para el proyecto final.
 
 ---
 
