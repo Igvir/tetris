@@ -1,0 +1,2 @@
+# Leccion 1: solo se usa Python puro (sin dependencias todavia).
+# Pygame se agregara en la Leccion 3, cuando abramos la ventana.
