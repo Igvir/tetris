@@ -111,7 +111,10 @@ tetris/
 │   ├── piezas.py         # Matrices de cada pieza, sus rotaciones y los colores neón
 │   ├── tablero.py        # Matriz del tablero: crear, fusionar, líneas
 │   ├── juego.py          # Lógica del juego: pieza activa, movimiento, colisión, puntuación
-│   └── grafico.py        # Presentación en Pygame (estilo números y estilo neón)
+│   ├── grafico.py        # Presentación en Pygame (estilo números y estilo neón)
+│   └── audio.py          # Carga y reproducción de sonidos (giro, línea) con pygame.mixer
+├── assets/
+│   └── sonidos/          # Archivos de sonido sencillos (giro.wav, linea.wav, ...)
 ├── main.py               # Punto de entrada: abre la ventana de Pygame y ejecuta el juego
 ├── tests/                # Pruebas de la lógica de matrices
 ├── docs/
@@ -169,6 +172,15 @@ Métodos:
 - Muestra la puntuación en pantalla.
 - Reutiliza la clase `Juego` sin cambios en ambos estilos.
 - La evolución de Etapa 1 a Etapa 2 consiste en cambiar la función de dibujo de celda, sin tocar la lógica.
+- Gestiona las **animaciones** breves de presentación (destello al fusionar y parpadeo de filas antes de eliminarse), controladas por un contador de fotogramas para no bloquear el bucle.
+- Reproduce los sonidos llamando a `audio.py` en los eventos de giro y de línea eliminada.
+
+### `audio.py` (sonidos, capa de presentación)
+
+- `iniciar_audio()`: inicializa `pygame.mixer` de forma segura; si falla, deja el audio desactivado sin romper el juego.
+- `cargar_sonidos()`: carga los archivos de `assets/sonidos/` (por ejemplo `giro.wav`, `linea.wav`) y los guarda en un diccionario.
+- `reproducir(nombre)`: reproduce un sonido si el audio está disponible; si no, no hace nada (degradación silenciosa).
+- Todo el audio es **opcional**: si no hay archivos o el mezclador no arranca, el juego continúa normalmente (Requisito 9b.6).
 
 ## Algoritmos clave
 
@@ -230,8 +242,10 @@ def eliminar_lineas(tablero):
 
 - Movimientos y rotaciones inválidos se rechazan silenciosamente (no lanzan error): el estado simplemente no cambia.
 - La entrada del teclado no reconocida se ignora.
-- En Etapa 2, cerrar la ventana termina el bucle limpiamente (`pygame.quit()`).
-- Si Pygame no está instalado, `main_grafico.py` muestra un mensaje claro pidiendo `pip install -r requirements.txt`.
+- Cerrar la ventana termina el bucle limpiamente (`pygame.quit()`).
+- Si Pygame no está instalado, `main.py` muestra un mensaje claro pidiendo `pip install -r requirements.txt`.
+- El audio es opcional: si `pygame.mixer` no se inicializa o falta un archivo de sonido, el juego continúa sin audio y sin lanzar error (Requisito 9b.6).
+- Las animaciones se controlan por un contador de fotogramas y duran pocos frames, de modo que no bloquean el bucle de juego (Requisito 9b.7).
 
 ## Estrategia de pruebas
 
@@ -313,5 +327,6 @@ Guía docente separada, pensada para quien imparte el curso. Incluye:
 4. **Colisiones y fusión**: la pieza se detiene y se une al tablero; aparece la siguiente.
 5. **Líneas y puntuación**: eliminar filas completas y contar puntos; fin del juego.
 6. **Estilo neón**: reutilizar la misma lógica y cambiar el dibujo de cada celda a colores neón brillantes sobre fondo oscuro para un acabado muy vistoso.
+7. **Sonidos y animaciones**: añadir sonidos sencillos al girar y al eliminar filas, y animaciones breves al fusionar y al eliminar líneas, todo en la capa de presentación.
 
 Cada etapa es jugable/observable en la ventana de Pygame, manteniendo el estilo motivador y progresivo del curso Snake.

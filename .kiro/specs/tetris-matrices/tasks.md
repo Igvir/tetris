@@ -87,6 +87,19 @@ Las tareas siguen la progresión del tutorial: siempre se trabaja sobre una vent
     - Reutilizar la clase `Juego` y toda la lógica sin cambios.
     - _Requisitos: 9.2, 9.3, 9.4, 9.5_
 
+- [ ] 11b. Añadir sonidos y animaciones (pulido)
+  - [ ] 11b.1 Sonidos con pygame.mixer
+    - Crear `audio.py` con `iniciar_audio()`, `cargar_sonidos()` y `reproducir(nombre)`, con degradación segura si no hay audio.
+    - Añadir archivos de sonido sencillos en `assets/sonidos/` (giro y línea eliminada).
+    - Reproducir el sonido de giro al rotar con éxito y el de línea al eliminar filas.
+    - _Requisitos: 9b.1, 9b.2, 9b.5, 9b.6, 9b.8_
+  - [ ] 11b.2 Animación al fusionar
+    - Mostrar un destello/parpadeo neón breve en las casillas recién fusionadas, controlado por un contador de fotogramas.
+    - _Requisitos: 9b.3, 9b.7, 9b.8_
+  - [ ] 11b.3 Animación al eliminar filas
+    - Mostrar un parpadeo breve de las filas completas antes de eliminarlas.
+    - _Requisitos: 9b.4, 9b.7, 9b.8_
+
 - [ ] 12. Pruebas de la lógica de matrices
   - Escribir pruebas para crear tablero, fusionar, `es_valida`, `eliminar_lineas` y rotación cíclica.
   - _Requisitos: 1.1, 1.2, 3.3, 5.5, 6.1_
@@ -107,7 +120,7 @@ Las tareas siguen la progresión del tutorial: siempre se trabaja sobre una vent
     - Definir el formato de cada lección: objetivos, conceptos nuevos y actividad práctica.
     - _Requisitos: 11.1, 11.2, 11.3_
   - [ ] 14.2 Lecciones por etapa con prompts de Kiro
-    - Escribir una lección por etapa (matriz, piezas/rotación, ventana con números, caída/movimiento, colisiones/fusión, líneas/puntuación, neón).
+    - Escribir una lección por etapa (matriz, piezas/rotación, ventana con números, caída/movimiento, colisiones/fusión, líneas/puntuación, neón, sonidos y animaciones).
     - Incluir en cada lección el prompt sugerido de Kiro y el flujo de spec driven development.
     - Incluir fragmentos de código explicados y el resultado esperado en la ventana.
     - _Requisitos: 11.4, 11.5, 11.6_

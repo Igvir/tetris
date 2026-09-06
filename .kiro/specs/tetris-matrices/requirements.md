@@ -127,6 +127,21 @@ El curso avanza en versiones incrementales usando **siempre una ventana gráfica
 4. LA lógica de matrices DEBERÁ reutilizarse sin cambios entre la versión numérica y la versión con colores neón; solo cambia la capa de dibujo.
 5. LA versión gráfica DEBERÁ mostrar la puntuación en pantalla con el mismo estilo visual.
 
+### Requisito 9b: Sonidos y animaciones
+
+**Historia de usuario:** Como jugador, quiero escuchar sonidos sencillos al girar una pieza y al eliminar una fila, y ver una pequeña animación al fusionar una pieza, para que el juego sea más vistoso y con mejor respuesta.
+
+#### Criterios de aceptación
+
+1. CUANDO el jugador rota una pieza con éxito ENTONCES el sistema DEBERÁ reproducir un sonido corto de giro.
+2. CUANDO se elimina una o más filas completas ENTONCES el sistema DEBERÁ reproducir un sonido de línea eliminada.
+3. CUANDO una pieza se fusiona con el tablero ENTONCES el sistema DEBERÁ mostrar una animación breve (por ejemplo, un destello o parpadeo neón en las casillas recién fusionadas).
+4. CUANDO se eliminan filas ENTONCES el sistema DEBERÍA mostrar una animación breve de las filas antes de que desaparezcan (por ejemplo, un parpadeo).
+5. LOS sonidos DEBERÁN ser archivos sencillos y ligeros, cargados a través de Pygame (`pygame.mixer`).
+6. SI un archivo de sonido no está disponible o el mezclador de audio no se puede inicializar ENTONCES el juego DEBERÁ continuar sin fallar (el audio es opcional y degradable).
+7. LAS animaciones NO DEBERÁN bloquear el bucle de juego de forma perceptible; DEBERÁN durar pocos fotogramas.
+8. LA lógica de matrices DEBERÁ permanecer sin cambios; los sonidos y animaciones DEBERÁN vivir en la capa de presentación (Pygame).
+
 ### Requisito 10: Estructura del proyecto y aprendizaje
 
 **Historia de usuario:** Como estudiante, quiero que el proyecto esté organizado y documentado como un tutorial, para poder seguirlo paso a paso con Kiro.
