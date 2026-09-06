@@ -157,9 +157,9 @@ El curso avanza en versiones incrementales usando **siempre una ventana gráfica
 7. LAS instrucciones de entrega DEBERÁN incluir los comandos concretos de Git (clonar, crear y cambiar de rama, confirmar, subir la rama y abrir el PR).
 8. LAS instrucciones DEBERÁN explicar que el Pull Request es la evidencia de que el estudiante completó la asignación.
 
-### Requisito 11: Guía del curso para el estudiante
+### Requisito 11: Guía del curso para el estudiante (con Kiro)
 
-**Historia de usuario:** Como estudiante, quiero una guía del curso que me lleve paso a paso por la construcción del Tetris usando Kiro y spec driven development, para aprender el manejo de matrices mientras construyo el juego.
+**Historia de usuario:** Como estudiante, quiero una guía del curso que me lleve paso a paso por la construcción del Tetris usando Kiro y spec driven development, para aprender el manejo de matrices mientras construyo el juego con ayuda de un asistente.
 
 #### Criterios de aceptación
 
@@ -170,6 +170,21 @@ El curso avanza en versiones incrementales usando **siempre una ventana gráfica
 5. LA guía DEBERÁ seguir la progresión de etapas del proyecto: ventana con números primero y colores neón al final.
 6. LA guía DEBERÁ incluir fragmentos de código explicados y los resultados esperados en cada etapa.
 7. LA guía DEBERÁ incluir ideas de mejoras o retos para estudiantes avanzados, en el estilo del curso Snake.
+8. LA guía DEBERÁ enlazar a la guía del estudiante sin Kiro como ruta alternativa.
+
+### Requisito 11b: Guía del curso para el estudiante (sin Kiro)
+
+**Historia de usuario:** Como estudiante, quiero una guía alternativa que me enseñe a programar el Tetris escribiendo todo el código a mano, sin ningún agente de IA, para aprender a programar de forma autónoma.
+
+#### Criterios de aceptación
+
+1. EL proyecto DEBERÁ incluir una segunda guía del estudiante en español, separada de la versión con Kiro, que NO use prompts ni mencione pedir código a un agente.
+2. LA guía DEBERÁ seguir las mismas 8 lecciones y la misma progresión (números primero, neón al final) que la versión con Kiro.
+3. CADA lección DEBERÁ guiar al estudiante a escribir el código a mano, explicado por bloques, coherente con el código real de los módulos del proyecto.
+4. LA guía DEBERÁ enseñar el flujo de trabajo autónomo: escribir, ejecutar, leer los errores y depurar.
+5. LA guía DEBERÁ indicar la rama de Git de cada lección para que el estudiante compare su avance con la solución.
+6. CADA lección DEBERÁ incluir objetivos de aprendizaje, conceptos nuevos, resultado esperado y una actividad práctica.
+7. LA guía DEBERÁ incluir los mismos retos para estudiantes avanzados y enlazar a la guía con Kiro como ruta alternativa.
 
 ### Requisito 12: Guía del instructor
 
@@ -184,3 +199,4 @@ El curso avanza en versiones incrementales usando **siempre una ventana gráfica
 5. LA guía del instructor DEBERÁ incluir criterios de evaluación y una rúbrica, en la línea del curso Snake (participación, tareas y proyecto final).
 6. LA guía del instructor DEBERÁ incluir soluciones o respuestas esperadas de las actividades prácticas de cada sesión.
 7. LA guía del instructor DEBERÁ recomendar cómo usar Kiro en el aula (uso de specs, prompts y revisión del código generado).
+8. LA guía del instructor DEBERÁ cubrir las dos rutas del estudiante (con Kiro y sin Kiro) e indicar cuándo conviene cada una.

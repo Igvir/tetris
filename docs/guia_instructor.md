@@ -13,6 +13,23 @@ Está pensada para quien imparte el curso a estudiantes principiantes-intermedio
 
 ---
 
+## Dos rutas para el estudiante: con Kiro y sin Kiro
+
+El curso ofrece **dos guías del estudiante** con la misma progresión de 8 lecciones, el mismo juego final y las mismas actividades. Cambia solo el **método de trabajo**:
+
+- **Con Kiro** (`docs/guia_estudiante.md`): el estudiante construye cada etapa con la ayuda de Kiro y *spec driven development*, escribiendo prompts y revisando el código generado. Refuerza leer, entender y validar código; útil para avanzar más rápido y hablar de buenas prácticas de trabajo con asistentes.
+- **Sin Kiro** (`docs/guia_estudiante_sin_kiro.md`): el estudiante escribe **todo el código a mano**, sin agente. Refuerza sintaxis, depuración y autonomía; útil para afianzar fundamentos de programación.
+
+Ambas rutas comparten esta guía del instructor, la planificación por sesiones, los errores comunes y la rúbrica. Recomendaciones:
+
+- **Grupos que empiezan a programar** o donde el objetivo es afianzar fundamentos: usa la ruta **sin Kiro**.
+- **Grupos con base previa** o donde quieras enseñar a trabajar con un asistente de forma responsable: usa la ruta **con Kiro**.
+- **Modo mixto**: puedes pedir que escriban a mano la lógica (lecciones 1-6) y usar Kiro para el pulido visual (lecciones 7-8), o dejar que cada estudiante elija su ruta. En cualquier caso, la regla es la misma: **nada se acepta sin entenderse**.
+
+La sección "Recomendaciones para usar Kiro en el aula" (más abajo) aplica solo a la ruta con Kiro; el resto de la guía sirve para ambas.
+
+---
+
 ## Planificación por sesiones
 
 El curso se organiza en **8 sesiones** que siguen la progresión de etapas del proyecto (una lección de la guía del estudiante por sesión). La duración estimada asume clases de aproximadamente 90 minutos; ajústala a tu contexto. Todas las sesiones terminan en algo observable en la ventana de Pygame, salvo las dos primeras, que preparan los datos.
