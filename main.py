@@ -1,29 +1,33 @@
-"""Leccion 2 - Las piezas y sus rotaciones.
+"""Leccion 3 - La ventana de Pygame con numeros.
 
-Seguimos en la terminal. Aqui vemos que cada pieza es una matriz de numeros y
-que rotar es simplemente cambiar de matriz. Ejecuta:
+Abrimos por primera vez una ventana. Colocamos algunas piezas "a mano" en el
+tablero (fusionando sus matrices) y las vemos dibujadas como NUMEROS sobre la
+cuadricula 10x20. Todavia no caen; eso llega en la Leccion 4.
 
     python main.py
+
+Cierra la ventana o pulsa Esc para salir.
 """
 
-from tetris.piezas import PIEZAS, mostrar_pieza
+from tetris.tablero import crear_tablero, fusionar
+from tetris.piezas import PIEZAS
 
 
 def main():
-    print("La pieza T (numero 3) y sus 4 rotaciones:\n")
-    for indice in range(len(PIEZAS["T"])):
-        print(f"Rotacion {indice}:")
-        mostrar_pieza("T", indice)
-        print()
+    try:
+        from tetris import grafico
+    except ImportError:
+        print("Falta Pygame. Instala las dependencias con:")
+        print("    pip install -r requirements.txt")
+        return
 
-    print("La pieza I (numero 1) tiene 2 rotaciones (horizontal y vertical):\n")
-    for indice in range(len(PIEZAS["I"])):
-        print(f"Rotacion {indice}:")
-        mostrar_pieza("I", indice)
-        print()
+    # Creamos el tablero vacio y colocamos algunas piezas a mano para verlas.
+    tablero = crear_tablero()
+    fusionar(tablero, PIEZAS["T"][0], 0, 3)    # una T arriba al centro
+    fusionar(tablero, PIEZAS["L"][0], 17, 0)   # una L abajo a la izquierda
+    fusionar(tablero, PIEZAS["I"][0], 18, 4)   # una I acostada abajo
 
-    print("La pieza O (numero 2) es un cuadrado: una sola rotacion.\n")
-    mostrar_pieza("O", 0)
+    grafico.ejecutar(tablero)
 
 
 if __name__ == "__main__":

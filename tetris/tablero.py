@@ -22,3 +22,15 @@ def mostrar_tablero(tablero):
     """Imprime la matriz del tablero en la terminal, fila por fila."""
     for fila in tablero:
         print(" ".join(str(celda) for celda in fila))
+
+
+def fusionar(tablero, matriz, fila, columna):
+    """Copia los numeros distintos de 0 de una pieza dentro del tablero.
+
+    En esta leccion la usamos para colocar piezas "a mano" y verlas dibujadas
+    en la ventana. Mas adelante servira para pegar las piezas que caen.
+    """
+    for i in range(len(matriz)):
+        for j in range(len(matriz[i])):
+            if matriz[i][j] != 0:
+                tablero[fila + i][columna + j] = matriz[i][j]

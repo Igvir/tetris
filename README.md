@@ -1,25 +1,27 @@
-# Tetris con Matrices — Lección 2: Las piezas y sus rotaciones
+# Tetris con Matrices — Lección 3: La ventana con números
 
-Esta rama corresponde a la **Lección 2**. Seguimos trabajando en la terminal.
-Ahora representamos cada pieza (tetrominó) como una **matriz** de números y
-descubrimos que **rotar es cambiar de matriz**, no hacer cálculos.
+Esta rama corresponde a la **Lección 3**. ¡Abrimos por primera vez una ventana
+de Pygame! Dibujamos el tablero (la matriz) mostrando el **número** de cada
+casilla sobre una cuadrícula de 10×20. Las piezas todavía no caen: las colocamos
+a mano para ver los números dibujados.
 
 ## Qué aprenderás
-- Representar cada pieza como una matriz pequeña (`0` = hueco, número = pieza).
-- Guardar todas las rotaciones de una pieza en una lista.
-- El mapeo de piezas: I=1, O=2, T=3, S=4, Z=5, J=6, L=7.
+- Abrir una ventana de Pygame y dibujar una cuadrícula.
+- Recorrer una matriz con dos bucles anidados (fila, luego columna).
+- Dibujar el número de cada casilla; `0` se ve como celda vacía.
 
-## Ejecutar
+## Instalar y ejecutar
 
 ```bash
+pip install -r requirements.txt
 python main.py
 ```
 
-Verás la pieza T con sus 4 rotaciones, la I con 2 y la O con 1, todas dibujadas
-con números.
+Verás la cuadrícula con algunas piezas dibujadas como números (una T, una L y una I).
+Cierra la ventana o pulsa Esc para salir.
 
 ## Lecciones
-- Anterior: `git checkout leccion-1-matriz-tablero`
-- Siguiente: `git checkout leccion-3-ventana-numeros` (¡abrimos la ventana!)
+- Anterior: `git checkout leccion-2-piezas`
+- Siguiente: `git checkout leccion-4-pieza-cae` (¡la pieza empieza a caer!)
 
 La guía completa está en [docs/guia_estudiante.md](docs/guia_estudiante.md) de la rama `main`.
