@@ -86,6 +86,7 @@ Hay **dos rutas** para el estudiante, con las mismas 8 lecciones y el mismo jueg
 - **[Guía del estudiante (con Kiro)](docs/guia_estudiante.md)** — construye el juego con la ayuda de Kiro y *spec driven development*, usando prompts.
 - **[Guía del estudiante (sin Kiro)](docs/guia_estudiante_sin_kiro.md)** — aprende a programar escribiendo **todo el código a mano**, sin ningún agente de IA.
 - **[Guía del instructor](docs/guia_instructor.md)** — planificación, errores comunes, soluciones y rúbrica (cubre ambas rutas).
+- **[Guiones de video](docs/guiones_video.md)** — guion escena por escena (narración + qué mostrar) para producir el curso en video con herramientas de IA y/o grabación de pantalla.
 
 ## 🌱 Recorrido paso a paso (ramas por lección)
 
