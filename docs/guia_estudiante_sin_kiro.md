@@ -21,6 +21,37 @@ vas a dominar las **matrices (listas de listas)**.
 
 ---
 
+## Paso 0: Prepara tu copia del proyecto y tu rama de trabajo
+
+Antes de escribir nada, deja lista tu copia del proyecto y **crea una rama con tu
+nombre** donde harás todo el curso. Así conservas la rama `main` intacta como
+referencia y, al terminar, entregas tu trabajo con un Pull Request desde tu rama.
+
+```bash
+# 1. Clona el repositorio (o haz un fork y clona el tuyo)
+git clone <url-del-repositorio>
+cd tetris
+
+# 2. Crea tu rama de trabajo con tu nombre y cámbiate a ella
+git checkout -b tetris-nombre-apellido
+```
+
+Cuando creas tu rama a partir de `main`, **esta guía ya viene incluida** en
+`docs/` dentro de tu rama, junto con el resto del proyecto. No tienes que
+descargarla aparte: ábrela desde tu editor y síguela desde ahí.
+
+> Trabaja siempre en **tu rama** (`tetris-nombre-apellido`), no en `main`. Guarda
+> tus avances con `git add` y `git commit` a menudo. Al final del curso subirás
+> tu rama y abrirás un Pull Request: ese PR es la evidencia de que completaste la
+> asignación (ver la sección de entrega en el [README](../README.md)).
+
+Recuerda que cada lección tiene su propia rama de solución (`leccion-N-...`). Para
+consultarla sin perder tu trabajo, primero confirma tus cambios (`git commit`) y
+luego usa `git checkout leccion-N-...`; para volver a lo tuyo,
+`git checkout tetris-nombre-apellido`.
+
+---
+
 ## Antes de empezar: ¿qué es una matriz?
 
 Una **matriz** es simplemente una **lista de listas**. Imagina una cuadrícula
@@ -122,11 +153,14 @@ programador:
 ### Compara tu avance con la solución
 
 Cada lección tiene su propia rama de Git con la solución completa de esa etapa.
-Si te atascas o quieres comprobar tu resultado, puedes mirarla:
+Si te atascas o quieres comprobar tu resultado, guarda antes tus cambios en tu
+rama (`git commit`) y luego mírala:
 
 ```bash
-git checkout leccion-3-ventana-numeros   # cambia a la solución de la lección 3
-python main.py                            # ejecútala para ver cómo debería quedar
+git commit -am "Mi avance de la leccion 3"   # guarda tu trabajo primero
+git checkout leccion-3-ventana-numeros       # mira la solución de la lección 3
+python main.py                               # ejecútala para ver cómo debería quedar
+git checkout tetris-nombre-apellido          # vuelve a tu rama para seguir
 ```
 
 Intenta escribir tú primero y usa la rama solo para comparar. Aprenderás mucho

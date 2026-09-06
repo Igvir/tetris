@@ -171,6 +171,7 @@ El curso avanza en versiones incrementales usando **siempre una ventana gráfica
 6. LA guía DEBERÁ incluir fragmentos de código explicados y los resultados esperados en cada etapa.
 7. LA guía DEBERÁ incluir ideas de mejoras o retos para estudiantes avanzados, en el estilo del curso Snake.
 8. LA guía DEBERÁ enlazar a la guía del estudiante sin Kiro como ruta alternativa.
+9. LA guía DEBERÁ incluir un paso inicial que indique al estudiante clonar el repositorio y crear una rama de trabajo con su nombre antes de empezar, aclarando que la guía ya viene incluida en esa rama.
 
 ### Requisito 11b: Guía del curso para el estudiante (sin Kiro)
 
@@ -185,6 +186,7 @@ El curso avanza en versiones incrementales usando **siempre una ventana gráfica
 5. LA guía DEBERÁ indicar la rama de Git de cada lección para que el estudiante compare su avance con la solución.
 6. CADA lección DEBERÁ incluir objetivos de aprendizaje, conceptos nuevos, resultado esperado y una actividad práctica.
 7. LA guía DEBERÁ incluir los mismos retos para estudiantes avanzados y enlazar a la guía con Kiro como ruta alternativa.
+8. LA guía DEBERÁ incluir un paso inicial que indique al estudiante clonar el repositorio y crear una rama de trabajo con su nombre antes de empezar, aclarando que la guía ya viene incluida en esa rama.
 
 ### Requisito 12: Guía del instructor
 
