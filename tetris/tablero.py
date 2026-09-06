@@ -36,8 +36,7 @@ def es_valida(tablero, matriz, fila, columna):
     """Indica si la matriz de una pieza cabe en (fila, columna).
 
     Recorre SOLO las casillas ocupadas (distintas de 0) de la pieza y
-    comprueba que no salgan de los limites del tablero. (En la Leccion 5
-    anadiremos ademas la comprobacion de choque con otras piezas.)
+    comprueba que no salgan de los limites NI pisen una casilla ya ocupada.
     """
     alto = len(tablero)
     ancho = len(tablero[0])
@@ -46,6 +45,11 @@ def es_valida(tablero, matriz, fila, columna):
             if matriz[i][j] != 0:
                 f = fila + i
                 c = columna + j
+                # Fuera de los limites (izquierda, derecha o base).
                 if c < 0 or c >= ancho or f >= alto:
+                    return False
+                # Choca con una casilla ya ocupada (ignora filas negativas:
+                # la pieza aun puede estar entrando por arriba).
+                if f >= 0 and tablero[f][c] != 0:
                     return False
     return True

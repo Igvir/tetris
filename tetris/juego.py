@@ -1,10 +1,8 @@
-"""Leccion 4: la pieza que cae.
+"""Leccion 5: colisiones y fusion.
 
-Creamos la clase Juego, que guarda el estado de la pieza activa (que pieza,
-que rotacion y en que fila/columna esta). La pieza cae sola con el tiempo, y el
-jugador puede moverla y rotarla. En esta leccion, al llegar al fondo la pieza
-simplemente vuelve a aparecer arriba: TODAVIA NO se acumula. La acumulacion
-(fusion) llega en la Leccion 5.
+La clase Juego ahora detecta colisiones (con `es_valida`) y, cuando una pieza
+no puede bajar mas, la FUSIONA con el tablero (copia su matriz) y genera una
+pieza nueva. Asi las piezas se acumulan como en el Tetris clasico.
 """
 
 from . import piezas
@@ -48,11 +46,17 @@ class Juego:
             self.rotacion = siguiente
 
     def bajar(self):
-        """Baja una fila. Si no puede, por ahora reaparece arriba (sin fusionar)."""
+        """Baja una fila. Si no puede, FUSIONA la pieza y saca una nueva.
+
+        Ahora las piezas se acumulan: al aterrizar, copiamos su matriz en el
+        tablero (fusionar) y generamos una pieza nueva arriba.
+        """
         if tab.es_valida(self.tablero, self.matriz_pieza_actual(),
                          self.fila + 1, self.columna):
             self.fila += 1
         else:
+            tab.fusionar(self.tablero, self.matriz_pieza_actual(),
+                         self.fila, self.columna)
             self.nueva_pieza()
 
     def tablero_con_pieza(self):

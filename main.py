@@ -1,12 +1,11 @@
-"""Leccion 4 - La pieza que cae.
+"""Leccion 5 - Colisiones y fusion.
 
-Una pieza baja sola por el tablero. Muevela con las flechas izquierda/derecha,
-rotala con la flecha arriba y acelerala con la flecha abajo. Por ahora, al
-llegar al fondo la pieza reaparece arriba (aun no se acumula).
+Ahora las piezas se detienen al tocar el fondo u otra pieza y se quedan pegadas
+(fusionadas) al tablero. Deja caer varias y observa como se acumulan.
 
     python main.py
 
-Cierra la ventana o pulsa Esc para salir.
+Controles: flechas para mover/rotar/bajar, Esc para salir.
 """
 
 

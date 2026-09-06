@@ -1,8 +1,8 @@
-"""Leccion 4: la ventana con una pieza que cae (estilo numeros).
+"""Leccion 5: colisiones y fusion (estilo numeros).
 
-Anadimos el bucle de juego: la pieza baja sola cada cierto tiempo y el jugador
-la mueve con las flechas y la rota con la flecha arriba. Seguimos dibujando la
-matriz con NUMEROS.
+Mismo bucle de juego que en la Leccion 4, pero ahora las piezas se DETIENEN al
+tocar el fondo u otra pieza y se quedan pegadas (fusionadas) al tablero.
+Seguimos dibujando la matriz con NUMEROS.
 """
 
 import pygame
@@ -34,7 +34,7 @@ def dibujar_tablero(pantalla, fuente, matriz):
 def ejecutar():
     pygame.init()
     pantalla = pygame.display.set_mode((tab.ANCHO * TAM, tab.ALTO * TAM))
-    pygame.display.set_caption("Tetris con Matrices - Leccion 4 (la pieza cae)")
+    pygame.display.set_caption("Tetris con Matrices - Leccion 5 (colisiones y fusion)")
     reloj = pygame.time.Clock()
     fuente = pygame.font.SysFont("consolas", 20)
 

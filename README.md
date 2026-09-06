@@ -1,13 +1,14 @@
-# Tetris con Matrices — Lección 4: La pieza que cae
+# Tetris con Matrices — Lección 5: Colisiones y fusión
 
-Esta rama corresponde a la **Lección 4**. Creamos la clase `Juego` para guardar
-el estado de la pieza activa. Ahora una pieza **cae sola** y puedes moverla y
-rotarla. Seguimos viendo la matriz con **números**.
+Esta rama corresponde a la **Lección 5**. Ahora las piezas **se detienen** al
+tocar el fondo u otra pieza y se quedan pegadas: su matriz se **fusiona** con la
+del tablero. Las piezas se acumulan como en el Tetris clásico. Seguimos en modo
+**números**.
 
 ## Qué aprenderás
-- Guardar el estado de la pieza (nombre, rotación, fila, columna) en una clase.
-- Mover la pieza a los lados, rotarla (cambiando de matriz) y hacerla bajar.
-- El bucle de juego y la caída automática por tiempo.
+- Detectar colisiones con `es_valida` (límites y casillas ocupadas).
+- Fusionar la matriz de la pieza dentro del tablero al aterrizar.
+- Recorrer solo las casillas ocupadas (`!= 0`) de la pieza.
 
 ## Instalar y ejecutar
 
@@ -16,13 +17,10 @@ pip install -r requirements.txt
 python main.py
 ```
 
-Controles: ← → mover, ↑ rotar, ↓ bajar más rápido, Esc salir.
-
-> Nota: en esta lección, al llegar al fondo la pieza **reaparece arriba** sin
-> acumularse. La acumulación (fusión) llega en la Lección 5.
+Deja caer varias piezas y observa cómo se acumulan sin borrarse entre sí.
 
 ## Lecciones
-- Anterior: `git checkout leccion-3-ventana-numeros`
-- Siguiente: `git checkout leccion-5-colisiones-fusion` (las piezas se acumulan)
+- Anterior: `git checkout leccion-4-pieza-cae`
+- Siguiente: `git checkout leccion-6-lineas-puntuacion` (líneas, puntos y fin del juego)
 
 La guía completa está en [docs/guia_estudiante.md](docs/guia_estudiante.md) de la rama `main`.
