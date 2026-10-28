@@ -110,8 +110,21 @@ PIEZAS = {
 
 
 def pieza_aleatoria():
-    """Devuelve el nombre de una pieza elegida al azar."""
-    return random.choice(list(PIEZAS.keys()))
+    """Devuelve el nombre de una pieza elegida al azar.
+
+    [SEGURIDAD - azar "de juego" vs. azar "criptografico"]
+    El modulo `random` es rapido y perfecto para juegos, pero NO es apto para
+    cosas sensibles (contrasenas, tokens, sorteos con dinero), porque su
+    secuencia es predecible si alguien conoce la semilla. La herramienta de
+    analisis de seguridad `bandit` marca cualquier uso de `random` con el aviso
+    B311 por si acaso.
+
+    Aqui es un falso positivo: elegir la proxima pieza es puro juego, no hay
+    nada que proteger. Por eso anadimos el comentario `# nosec B311`, que le
+    dice a bandit "esto ya lo revisamos y es seguro". Si algun dia necesitaras
+    azar de verdad impredecible, usarias el modulo `secrets` en su lugar.
+    """
+    return random.choice(list(PIEZAS.keys()))  # nosec B311
 
 
 def mostrar_pieza(nombre, rotacion=0):

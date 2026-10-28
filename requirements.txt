@@ -1,1 +1,17 @@
-pygame==2.5.2
+# ---------------------------------------------------------------------------
+# SEGURIDAD: dependencias con version FIJADA (pinned)
+# ---------------------------------------------------------------------------
+# Usamos "==" (version exacta) en lugar de ">=" a proposito. Esto se llama
+# "fijar" o "pinnear" la dependencia y aporta dos cosas:
+#
+#  1) Builds reproducibles: todos instalan exactamente la misma version, asi el
+#     juego funciona igual en cualquier maquina (evita el clasico "en mi PC si
+#     funciona").
+#  2) Seguridad de la cadena de suministro: una actualizacion automatica podria
+#     traer una version con un fallo o incluso codigo malicioso. Al fijar la
+#     version, decidimos nosotros cuando actualizar, tras revisarla.
+#
+# Para comprobar si la version fijada tiene vulnerabilidades conocidas:
+#     pip install pip-audit
+#     pip-audit -r requirements.txt
+pygame==2.6.1

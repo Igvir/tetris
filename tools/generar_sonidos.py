@@ -55,11 +55,35 @@ def generar_linea():
     return muestras
 
 
+def _ruta_dentro(carpeta, nombre):
+    """Une `carpeta` + `nombre` asegurando que el resultado no se sale de ella.
+
+    [SEGURIDAD - validacion de rutas al ESCRIBIR]
+    Aqui el riesgo es el espejo del de audio.py: en lugar de leer, escribimos.
+    Si un nombre contuviera "..", podriamos crear o sobrescribir un archivo
+    fuera de assets/sonidos/ sin querer. Por eso resolvemos la ruta a absoluta
+    y comprobamos que empiece por la carpeta de destino.
+
+    Diferencia con la lectura: al escribir preferimos FALLAR de forma ruidosa
+    (lanzar ValueError) en vez de ignorar en silencio, porque escribir en el
+    sitio equivocado es un error que conviene ver de inmediato.
+    """
+    # Resolvemos ".." y normalizamos antes de decidir si la ruta es valida.
+    destino = os.path.abspath(os.path.join(carpeta, nombre))
+    # El separador final evita aceptar carpetas vecinas con prefijo parecido.
+    carpeta_con_sep = os.path.join(carpeta, "")
+    if not destino.startswith(carpeta_con_sep):
+        raise ValueError("Nombre de archivo no permitido: %r" % (nombre,))
+    return destino
+
+
 def main():
-    carpeta = os.path.normpath(CARPETA)
+    carpeta = os.path.abspath(CARPETA)
     os.makedirs(carpeta, exist_ok=True)
-    _escribir_wav(os.path.join(carpeta, "giro.wav"), generar_giro())
-    _escribir_wav(os.path.join(carpeta, "linea.wav"), generar_linea())
+    # [SEGURIDAD] Pasamos cada nombre por _ruta_dentro() para garantizar que los
+    # WAV solo se escriban dentro de assets/sonidos/.
+    _escribir_wav(_ruta_dentro(carpeta, "giro.wav"), generar_giro())
+    _escribir_wav(_ruta_dentro(carpeta, "linea.wav"), generar_linea())
     print("Sonidos generados en:", carpeta)
 
 
