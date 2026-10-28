@@ -23,8 +23,8 @@ El curso avanza por etapas: primero la ventana de Pygame dibuja los **números**
 
 ## 📋 Requisitos
 
-- Python 3.8 o superior
-- Pygame 2.5.2
+- Python 3.11 o superior (probado en 3.11, 3.12 y 3.13)
+- Pygame 2.6.1
 
 ## 🚀 Instalación
 
@@ -164,6 +164,30 @@ git push -u origin tetris-nombre-apellido
 Si este proyecto te resulta útil para aprender o enseñar, puedes invitarme un café. ¡Gracias por el apoyo!
 
 <a href="https://buymeacoffee.com/igvir" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50" width="210"></a>
+
+## 🔒 Seguridad
+
+Este es un juego **local** (sin red, sin servidor, sin base de datos), por lo
+que la mayoria del [OWASP Top 10](https://owasp.org/www-project-top-ten/) web no
+aplica. Aun asi, se aplican buenas practicas:
+
+- **Cadena de suministro**: las dependencias estan fijadas por version en
+  `requirements.txt`/`pyproject.toml` para builds reproducibles.
+- **Auditoria de dependencias**: `pip-audit` revisa vulnerabilidades conocidas.
+- **Analisis estatico**: `bandit` analiza el codigo en busca de patrones
+  inseguros.
+- **Manejo seguro de archivos**: la carga de sonidos valida que las rutas
+  queden dentro de `assets/sonidos/` (defensa ante *path traversal*).
+
+Para auditar localmente:
+
+```bash
+pip install pip-audit bandit
+pip-audit -r requirements.txt   # vulnerabilidades en dependencias
+bandit -r tetris main.py tools  # analisis estatico del codigo
+```
+
+Consulta [SECURITY.md](SECURITY.md) para reportar un problema de seguridad.
 
 ## 📄 Licencia
 

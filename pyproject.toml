@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tetris-matrices"
+version = "1.2.0"
+description = "Proyecto educativo: Tetris con matrices (listas de listas) en Python y Pygame."
+readme = "README.md"
+# Minimo moderno y con soporte de seguridad vigente. Probado en 3.11 - 3.13.
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "pygame==2.6.1",
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Games/Entertainment",
+    "Intended Audience :: Education",
+]
+
+[project.optional-dependencies]
+# Herramientas de calidad y seguridad (no necesarias para jugar).
+dev = [
+    "pytest>=8.0",
+    "pip-audit>=2.7",
+    "bandit>=1.7",
+]
+
+[project.scripts]
+tetris = "main:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.bandit]
+# Analisis estatico de seguridad. Excluimos carpetas sin codigo de aplicacion.
+exclude_dirs = ["tests", ".venv", "venv", "build", "dist"]
